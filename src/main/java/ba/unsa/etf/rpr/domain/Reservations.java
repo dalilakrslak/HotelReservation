@@ -11,8 +11,8 @@ public class Reservations {
     private Date check_in;
     private Date check_out;
     private int number_of_people;
-    private int room_id;
-    private int person_id;
+    private Room room_id;
+    private User person_id;
 
     public int getReservation_id() {
         return reservation_id;
@@ -46,19 +46,19 @@ public class Reservations {
         this.number_of_people = number_of_people;
     }
 
-    public int getRoom_id() {
+    public Room getRoom_id() {
         return room_id;
     }
 
-    public void setRoom_id(int room_id) {
+    public void setRoom_id(Room room_id) {
         this.room_id = room_id;
     }
 
-    public int getPerson_id() {
+    public User getPerson_id() {
         return person_id;
     }
 
-    public void setPerson_id(int person_id) {
+    public void setPerson_id(User person_id) {
         this.person_id = person_id;
     }
 
