@@ -5,7 +5,7 @@ import java.util.Objects;
  * holds information about user
  * @author Dalila Krslak
  */
-public class User {
+public class User implements Idable {
     private int user_id;
     private String first_name;
     private String last_name;
@@ -14,12 +14,14 @@ public class User {
     private String username;
     private String password;
 
-    public int getUser_id() {
-        return user_id;
+    @Override
+    public void setId(int id) {
+        this.user_id = id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    @Override
+    public int getId() {
+        return user_id;
     }
 
     public String getFirst_name() {
@@ -95,4 +97,5 @@ public class User {
     public int hashCode() {
         return Objects.hash(user_id, first_name, last_name, email, admin, username, password);
     }
+
 }
