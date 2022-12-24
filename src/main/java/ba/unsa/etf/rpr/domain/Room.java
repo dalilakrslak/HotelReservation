@@ -5,19 +5,21 @@ import java.util.Objects;
  * holds information about available rooms
  * @author Dalila Krslak
  */
-public class Room {
+public class Room implements Idable{
     private int room_id;
     private String description;
     private int number_of_people;
     private String price;
     private boolean status;
 
-    public int getRoom_id() {
-        return room_id;
+    @Override
+    public void setId(int id) {
+        this.room_id = id;
     }
 
-    public void setRoom_id(int room_id) {
-        this.room_id = room_id;
+    @Override
+    public int getId() {
+        return room_id;
     }
 
     public String getDescription() {
