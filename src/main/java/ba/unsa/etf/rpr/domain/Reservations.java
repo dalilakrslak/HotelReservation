@@ -6,7 +6,7 @@ import java.util.Objects;
  * holds information about reservation
  * @author Dalila Krslak
  */
-public class Reservations {
+public class Reservations implements Idable{
     private int reservation_id;
     private Date check_in;
     private Date check_out;
@@ -14,12 +14,16 @@ public class Reservations {
     private Room room_id;
     private User person_id;
 
-    public int getReservation_id() {
-        return reservation_id;
+
+
+    @Override
+    public void setId(int id) {
+        this.reservation_id = id;
     }
 
-    public void setReservation_id(int reservation_id) {
-        this.reservation_id = reservation_id;
+    @Override
+    public int getId() {
+        return reservation_id;
     }
 
     public Date getCheck_in() {
@@ -86,4 +90,5 @@ public class Reservations {
     public int hashCode() {
         return Objects.hash(reservation_id, check_in, check_out, number_of_people, room_id, person_id);
     }
+
 }
