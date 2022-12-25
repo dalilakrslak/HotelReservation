@@ -23,6 +23,7 @@ public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao{
             room.setNumber_of_people(rs.getInt("number_of_people"));
             room.setPrice(rs.getString("price"));
             room.setStatus(rs.getBoolean("status"));
+            room.setKapacitet(rs.getInt("kapacitet"));
             return  room;
         }
         catch (Exception e){
@@ -38,6 +39,7 @@ public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao{
         item.put("number_of_people", object.getNumber_of_people());
         item.put("price", object.getPrice());
         item.put("status", object.isStatus());
+        item.put("kapacitet", object.getKapacitet());
         return item;
     }
 }
