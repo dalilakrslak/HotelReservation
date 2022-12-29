@@ -52,5 +52,8 @@ public class LogInFormController {
         loginStage.hide();
         stage.show();
     }
-
+    public void cancelButtonOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) cancelButtonId.getScene().getWindow();
+        stage.close();
+    }
 }
