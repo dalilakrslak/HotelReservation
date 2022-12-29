@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
 public class AdminLogInFormController {
     public TextField usernameId;
     public PasswordField passwordId;
@@ -13,5 +15,9 @@ public class AdminLogInFormController {
     public void loginOnAction(ActionEvent actionEvent) {
     }
 
+    public void cancelOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) cancelButtonId.getScene().getWindow();
+        stage.close();
+    }
 
 }
