@@ -33,7 +33,7 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
                <image>
-                  <Image url="@../img/Hotel-PNG-Clipart.png" />
+                  <Image url="@../img/logo.png" />
                </image>
             </ImageView>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -43,7 +43,7 @@
                         <Insets bottom="20.0" left="10.0" right="5.0" top="40.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@../img/1077063.png" />
+                        <Image url="@../img/user_icon.png" />
                      </image>
                   </ImageView>
                   <TextField fx:id="usernameId" prefHeight="30.0" prefWidth="190.0" promptText="Username" style="-fx-border-color: black;">
@@ -63,7 +63,7 @@
                         <Insets bottom="20.0" left="10.0" right="5.0" top="10.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@../img/2889676.png" />
+                        <Image url="@../img/password_icon.png" />
                      </image>
                   </ImageView>
                   <PasswordField fx:id="passwordId" prefHeight="30.0" prefWidth="190.0" promptText="Password" style="-fx-border-color: black;">
@@ -128,7 +128,7 @@
       </VBox>
       <ImageView fitHeight="405.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true" GridPane.rowSpan="3">
          <image>
-            <Image url="@../img/d380b3cb1183f4cc6cfcfba05acdcaa5.jpg" />
+            <Image url="@../img/forms.jpg" />
          </image>
       </ImageView>
    </children>
