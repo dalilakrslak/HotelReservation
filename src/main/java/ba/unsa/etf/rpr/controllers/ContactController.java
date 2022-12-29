@@ -55,4 +55,17 @@ public class ContactController {
         contactStage.hide();
         stage.show();
     }
+
+    public void ccontactOnAction(ActionEvent actionEvent) throws IOException {
+        final Stage  contactStage = (Stage) contactPaneId.getScene().getWindow();
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/contact.fxml"));
+        ContactController controller = new ContactController();
+        loader.setController(controller);
+        stage.setTitle("Hotel Contact");
+        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        contactStage.hide();
+        stage.show();
+    }
 }
