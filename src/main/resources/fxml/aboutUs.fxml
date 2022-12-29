@@ -52,14 +52,14 @@
    <right>
       <ImageView fitHeight="468.0" fitWidth="272.0" opacity="0.8" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../img/30b7d1c50cdf1f087024f229d20daed7.jpg" />
+            <Image url="@../img/aboutus1.jpg" />
          </image>
       </ImageView>
    </right>
    <left>
       <ImageView fitHeight="468.0" fitWidth="258.0" opacity="0.8" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../img/interior1.jpg" />
+            <Image url="@../img/aboutus2.jpg" />
          </image>
       </ImageView>
    </left>
