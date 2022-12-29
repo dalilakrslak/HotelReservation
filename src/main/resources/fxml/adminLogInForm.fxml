@@ -27,7 +27,7 @@
    <children>
       <ImageView fitHeight="405.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true" GridPane.rowSpan="3">
          <image>
-            <Image url="@../img/d380b3cb1183f4cc6cfcfba05acdcaa5.jpg" />
+            <Image url="@../img/forms.jpg" />
          </image>
       </ImageView>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowSpan="3">
