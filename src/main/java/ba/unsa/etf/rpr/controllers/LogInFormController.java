@@ -40,5 +40,17 @@ public class LogInFormController {
         stage.show();
     }
 
+    public void registerOnAction(ActionEvent actionEvent) throws IOException {
+        final Stage  loginStage = (Stage) loginFormPaneId.getScene().getWindow();
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/signUpForm.fxml"));
+        SignUpFormController controller = new SignUpFormController();
+        loader.setController(controller);
+        stage.setTitle("Hotel Reservation Registration");
+        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        loginStage.hide();
+        stage.show();
+    }
 
 }
