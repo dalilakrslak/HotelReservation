@@ -63,4 +63,16 @@ public class HomeController {
         homeStage.hide();
         stage.show();
     }
+    public void bookNowOnAction(ActionEvent actionEvent) throws IOException {
+        final Stage  homeStage = (Stage) homePaneId.getScene().getWindow();
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/booking.fxml"));
+        ContactController controller = new ContactController();
+        loader.setController(controller);
+        stage.setTitle("Booking");
+        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        homeStage.hide();
+        stage.show();
+    }
 }
