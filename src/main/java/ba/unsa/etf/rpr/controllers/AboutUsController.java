@@ -1,5 +1,12 @@
 package ba.unsa.etf.rpr.controllers;
 
-public class AboutUsController {
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 
+public class AboutUsController {
+    public Button homeButtonId;
+    public Button aboutusButtonId;
+    public Button roomsButtonId;
+    public Button contactButtonOnAction;
+    public BorderPane aboutusPaneId;
 }
