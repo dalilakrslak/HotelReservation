@@ -53,16 +53,8 @@ public class HomeController {
         stage.show();
     }
     public void contactOnAction(ActionEvent actionEvent) throws IOException {
-        final Stage  homeStage = (Stage) homePaneId.getScene().getWindow();
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/contact.fxml"));
-        ContactController controller = new ContactController();
-        loader.setController(controller);
-        stage.setTitle("Hotel Contact");
-        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setResizable(false);
-        homeStage.hide();
-        stage.show();
+        OpenNewStage o = new OpenNewStage();
+        o.openWindow(homePaneId, "contact");
     }
     public void bookNowOnAction(ActionEvent actionEvent) throws IOException {
         OpenNewStage o = new OpenNewStage();
