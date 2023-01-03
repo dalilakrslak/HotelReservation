@@ -23,16 +23,8 @@ public class ContactController {
     }
 
     public void caboutusOnAction(ActionEvent actionEvent) throws IOException {
-        final Stage  contactStage = (Stage) contactPaneId.getScene().getWindow();
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/aboutUs.fxml"));
-        AboutUsController controller = new AboutUsController();
-        loader.setController(controller);
-        stage.setTitle("Hotel About Us");
-        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setResizable(false);
-        contactStage.hide();
-        stage.show();
+        OpenNewStage o = new OpenNewStage();
+        o.openWindow(contactPaneId, "aboutUs");
     }
 
     public void croomsOnAction(ActionEvent actionEvent) throws IOException {
