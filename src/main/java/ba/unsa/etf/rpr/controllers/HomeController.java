@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import ba.unsa.etf.rpr.controllers.OpenNewStage;
 
 import java.io.IOException;
 
@@ -64,15 +65,7 @@ public class HomeController {
         stage.show();
     }
     public void bookNowOnAction(ActionEvent actionEvent) throws IOException {
-        final Stage  homeStage = (Stage) homePaneId.getScene().getWindow();
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/booking.fxml"));
-        ContactController controller = new ContactController();
-        loader.setController(controller);
-        stage.setTitle("Booking");
-        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setResizable(false);
-        homeStage.hide();
-        stage.show();
+        OpenNewStage o = new OpenNewStage();
+        o.openWindow(homePaneId, "booking");
     }
 }
