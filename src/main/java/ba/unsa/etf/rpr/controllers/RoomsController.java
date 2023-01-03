@@ -17,16 +17,8 @@ public class RoomsController {
     public Button contactButtonId;
     public BorderPane roomsPaneId;
     public void homeOnAction(ActionEvent actionEvent) throws IOException {
-        final Stage roomsStage = (Stage) roomsPaneId.getScene().getWindow();
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
-        HomeController controller = new HomeController();
-        loader.setController(controller);
-        stage.setTitle("Hotel");
-        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setResizable(false);
-        roomsStage.hide();
-        stage.show();
+        OpenNewStage o = new OpenNewStage();
+        o.openWindow(roomsPaneId, "home");
     }
 
     public void aboutusOnAction(ActionEvent actionEvent) throws IOException {
