@@ -6,52 +6,58 @@ import ba.unsa.etf.rpr.exceptions.HotelException;
 import java.sql.*;
 import java.util.*;
 
-/**
- * Abstract class that implements core DAO CRUD methods for every entity
- *
- * @author Dino Keco
- */
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
 
-    private Connection connection;
+    private static Connection connection = null;
     private String tableName;
 
     public AbstractDao(String tableName) {
-        try{
-            this.tableName = tableName;
-            Properties p = new Properties();
-            p.load(ClassLoader.getSystemResource("application.properties").openStream());
-            String url = p.getProperty("db.url");
-            String username = p.getProperty("db.user");
-            String password = p.getProperty("db.password");
-            this.connection = DriverManager.getConnection(url, username, password);
-        }catch (Exception e){
-            e.printStackTrace();
-            System.exit(0);
-        }
+        this.tableName = tableName;
+        if(connection==null) createConnection();
     }
 
-    public Connection getConnection(){
-        return this.connection;
+    private static void createConnection(){
+        if(AbstractDao.connection==null) {
+            try {
+                Properties p = new Properties();
+                p.load(ClassLoader.getSystemResource("db.properties").openStream());
+                String url = p.getProperty("db.url");
+                String username = p.getProperty("db.user");
+                String password = p.getProperty("db.password");
+                AbstractDao.connection = DriverManager.getConnection(url, username, password);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.exit(0);
+            }
+        }
+    }
+    public static Connection getConnection(){
+        return AbstractDao.connection;
     }
 
     public void setConnection(Connection connection){
-        this.connection = connection;
+        if(AbstractDao.connection!=null) {
+            try {
+                AbstractDao.connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        AbstractDao.connection = connection;
     }
-
-    /**
-     * Method for mapping ResultSet into Object
-     * @param rs - result set from database
-     * @return a Bean object for specific table
-     * @throws HotelException in case of error with db
-     */
+    public void removeConnection(){
+        if(this.connection!=null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                //throw new RuntimeException(e);
+                e.printStackTrace();
+                System.out.println("REMOVE CONNECTION METHOD ERROR: Unable to close connection on database");
+            }
+        }
+    }
     public abstract T row2object(ResultSet rs) throws HotelException;
 
-    /**
-     * Method for mapping Object into Map
-     * @param object - a bean object for specific table
-     * @return key, value sorted map of object
-     */
     public abstract Map<String, Object> object2row(T object);
 
     public T getById(int id) throws HotelException {
@@ -129,13 +135,6 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         }
     }
 
-    /**
-     * Utility method for executing any kind of query
-     * @param query - SQL query
-     * @param params - params for query
-     * @return List of objects from database
-     * @throws HotelException in case of error with db
-     */
     public List<T> executeQuery(String query, Object[] params) throws HotelException{
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
@@ -155,13 +154,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         }
     }
 
-    /**
-     * Utility for query execution that always return single record
-     * @param query - query that returns single record
-     * @param params - list of params for sql query
-     * @return Object
-     * @throws HotelException in case when object is not found
-     */
+
     public T executeQueryUnique(String query, Object[] params) throws HotelException{
         List<T> result = executeQuery(query, params);
         if (result != null && result.size() == 1){
@@ -171,10 +164,6 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         }
     }
 
-    /**
-     * Accepts KV storage of column names and return CSV of columns and question marks for insert statement
-     * Example: (id, name, date) ?,?,?
-     */
     private Map.Entry<String, String> prepareInsertParts(Map<String, Object> row){
         StringBuilder columns = new StringBuilder();
         StringBuilder questions = new StringBuilder();
@@ -193,11 +182,6 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         return new AbstractMap.SimpleEntry<>(columns.toString(), questions.toString());
     }
 
-    /**
-     * Prepare columns for update statement id=?, name=?, ...
-     * @param row - row to be converted intro string
-     * @return String for update statement
-     */
     private String prepareUpdateParts(Map<String, Object> row){
         StringBuilder columns = new StringBuilder();
 
