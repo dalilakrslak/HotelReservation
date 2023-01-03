@@ -28,16 +28,8 @@ public class LogInFormController {
     }
 
     public void loginButtonOnAction(ActionEvent actionEvent) throws IOException {
-        final Stage loginStage = (Stage) loginFormPaneId.getScene().getWindow();
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
-        HomeController controller = new HomeController();
-        loader.setController(controller);
-        stage.setTitle("Hotel");
-        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setResizable(false);
-        loginStage.hide();
-        stage.show();
+        OpenNewStage o = new OpenNewStage();
+        o.openWindow(loginFormPaneId, "home");
     }
 
     public void registerOnAction(ActionEvent actionEvent) throws IOException {
