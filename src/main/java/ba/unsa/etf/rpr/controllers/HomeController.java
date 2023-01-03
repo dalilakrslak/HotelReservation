@@ -19,16 +19,8 @@ public class HomeController {
     public Button bookButtonId;
     public BorderPane homePaneId;
     public void homeOnAction(ActionEvent actionEvent) throws IOException {
-        final Stage homeStage = (Stage) homePaneId.getScene().getWindow();
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
-        HomeController controller = new HomeController();
-        loader.setController(controller);
-        stage.setTitle("Hotel");
-        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setResizable(false);
-        homeStage.hide();
-        stage.show();
+        OpenNewStage o = new OpenNewStage();
+        o.openWindow(homePaneId, "home");
     }
     public void aboutUsOnAction(ActionEvent actionEvent) throws IOException {
         OpenNewStage o = new OpenNewStage();
