@@ -25,16 +25,8 @@ public class AboutUsController {
         o.openWindow(aboutusPaneId, "aboutUs");
     }
     public void roomsOnAction(ActionEvent actionEvent) throws IOException {
-        final Stage  aboutusStage = (Stage) aboutusPaneId.getScene().getWindow();
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/rooms.fxml"));
-        RoomsController controller = new RoomsController();
-        loader.setController(controller);
-        stage.setTitle("Hotel Rooms");
-        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setResizable(false);
-        aboutusStage.hide();
-        stage.show();
+        OpenNewStage o = new OpenNewStage();
+        o.openWindow(aboutusPaneId, "rooms");
     }
     public void contactOnAction(ActionEvent actionEvent) throws IOException {
         final Stage  aboutusStage = (Stage) aboutusPaneId.getScene().getWindow();
