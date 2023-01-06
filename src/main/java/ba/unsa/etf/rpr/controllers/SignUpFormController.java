@@ -55,6 +55,13 @@ public class SignUpFormController {
 
             }
         }
+        else{
+            if(firstNameId.getText().isBlank()) emptyName.setText("First Name can't be empty!");
+            if(lastNameId.getText().isBlank()) emptyName.setText("Last Name can't be empty");
+            if(emailId.getText().isBlank()) emptyEmail.setText("E-mail can't be empty!");
+            if(usernameId.getText().isBlank())  invalidUsernameId.setText("Username can't be empty!");
+            if(passwordId.getText().isBlank() || lastNameId.getText().isBlank()) emptyPassword.setText("Password can't be empty!");
+        }
     }
     public boolean checkUsername(String username) {
         String sql = "SELECT * FROM USER WHERE username = ?";
