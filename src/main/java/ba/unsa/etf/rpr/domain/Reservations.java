@@ -10,7 +10,6 @@ public class Reservations implements Idable{
     private int reservation_id;
     private Date check_in;
     private Date check_out;
-    private int number_of_people;
     private Room room_id;
     private User person_id;
 
@@ -42,14 +41,6 @@ public class Reservations implements Idable{
         this.check_out = check_out;
     }
 
-    public int getNumber_of_people() {
-        return number_of_people;
-    }
-
-    public void setNumber_of_people(int number_of_people) {
-        this.number_of_people = number_of_people;
-    }
-
     public Room getRoom_id() {
         return room_id;
     }
@@ -72,7 +63,6 @@ public class Reservations implements Idable{
                 "reservation_id=" + reservation_id +
                 ", check_in=" + check_in +
                 ", check_out=" + check_out +
-                ", number_of_people=" + number_of_people +
                 ", room_id=" + room_id +
                 ", person_id=" + person_id +
                 '}';
@@ -88,7 +78,7 @@ public class Reservations implements Idable{
 
     @Override
     public int hashCode() {
-        return Objects.hash(reservation_id, check_in, check_out, number_of_people, room_id, person_id);
+        return Objects.hash(reservation_id, check_in, check_out, room_id, person_id);
     }
 
 }
