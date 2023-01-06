@@ -25,7 +25,8 @@ public class LogInFormController {
     // LogInFormController controller = new LogInFormController();
     @FXML
     public void initialize(){
-
+        usernameId.setFocusTraversable(false);
+        passwordId.setFocusTraversable(false);
     }
 
     public void loginButtonOnAction(ActionEvent actionEvent) throws IOException {
