@@ -52,7 +52,15 @@ public class SignUpFormController {
             boolean flag = checkUsername(username);
             if (flag) {
                 invalidUsernameId.setText("Username already exists!");
-
+            }
+            else {
+                user.setFirst_name(firstNameId.getText());
+                user.setLast_name(lastNameId.getText());
+                user.setEmail(emailId.getText());
+                user.setUsername(usernameId.getText());
+                user.setPassword(passwordId.getText());
+                user.setAdmin(false);
+                u.add(user);
             }
         }
         else{
