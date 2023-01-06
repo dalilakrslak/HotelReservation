@@ -78,7 +78,7 @@
             </HBox>
             <VBox prefHeight="200.0" prefWidth="316.0">
                <children>
-                  <Text fill="#fa0303" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="314.1367301940918">
+                  <Text fx:id="greskica" fill="#fa0303" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="314.1367301940918">
                      <VBox.margin>
                         <Insets bottom="5.0" />
                      </VBox.margin>
