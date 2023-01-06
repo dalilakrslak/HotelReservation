@@ -82,7 +82,7 @@
                         <Image url="@../img/email_icon.png" />
                      </image>
                   </ImageView>
-                  <TextField prefHeight="30.0" prefWidth="210.0" promptText="E-mail" style="-fx-border-color: black;">
+                  <TextField fx:id="emailId" prefHeight="30.0" prefWidth="210.0" promptText="E-mail" style="-fx-border-color: black;">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -136,7 +136,7 @@
                         <Image url="@../img/password_icon.png" />
                      </image>
                   </ImageView>
-                  <PasswordField prefHeight="30.0" prefWidth="210.0" promptText="Password" style="-fx-border-color: black;">
+                  <PasswordField fx:id="passwordId" prefHeight="30.0" prefWidth="210.0" promptText="Password" style="-fx-border-color: black;">
                      <font>
                         <Font size="13.0" />
                      </font>
