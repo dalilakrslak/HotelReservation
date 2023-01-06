@@ -20,7 +20,6 @@ public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao{
             Room room = new Room();
             room.setId(rs.getInt("room_id"));
             room.setDescription(rs.getString("description"));
-            room.setNumber_of_people(rs.getInt("number_of_people"));
             room.setPrice(rs.getString("price"));
             room.setStatus(rs.getBoolean("status"));
             room.setKapacitet(rs.getInt("kapacitet"));
@@ -36,7 +35,6 @@ public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao{
         Map<String, Object> item = new TreeMap<>();
         item.put("room_id", object.getId());
         item.put("description", object.getDescription());
-        item.put("number_of_people", object.getNumber_of_people());
         item.put("price", object.getPrice());
         item.put("status", object.isStatus());
         item.put("kapacitet", object.getKapacitet());
