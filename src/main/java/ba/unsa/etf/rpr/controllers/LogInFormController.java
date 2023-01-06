@@ -1,5 +1,9 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.dao.AbstractDao;
+import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
+import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.exceptions.HotelException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,14 +13,17 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 public class LogInFormController {
     public TextField usernameId;
     public PasswordField passwordId;
+    public Text greskica;
     public Button loginButtonId;
     public Hyperlink registerId;
     public Button cancelButtonId;
@@ -30,14 +37,23 @@ public class LogInFormController {
     }
 
     public void loginButtonOnAction(ActionEvent actionEvent) throws IOException {
-        /*OpenNewStage o = new OpenNewStage();
-        o.openWindow(loginFormPaneId, "home", controller);*/
-        openDialog("Home", "/fxml/home.fxml", new HomeController());
+        if(usernameId.getText().isBlank() == true && passwordId.getText().isBlank() == true){
+            greskica.setText("Please enter your username and password.");
+        }
+        else if(usernameId.getText().isBlank() == true && passwordId.getText().isBlank() == false){
+            greskica.setText("Please enter your username.");
+        }
+        else if(usernameId.getText().isBlank() == false && passwordId.getText().isBlank() == true){
+            greskica.setText("Please enter your password.");
+        }
+        else{
+            openDialog("Home", "/fxml/home.fxml", new HomeController());
+
+        }
     }
 
+
     public void registerOnAction(ActionEvent actionEvent) throws IOException {
-        /*OpenNewStage o = new OpenNewStage();
-        o.openWindow(loginFormPaneId, "signUpForm", controller);*/
         openDialog("Hotel Sign Up", "/fxml/signUpForm.fxml", new SignUpFormController());
     }
     public void cancelButtonOnAction(ActionEvent actionEvent) {
