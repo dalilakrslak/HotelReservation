@@ -1,9 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
-import ba.unsa.etf.rpr.dao.AbstractDao;
+import java.sql.*;
 import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
-import ba.unsa.etf.rpr.domain.User;
-import ba.unsa.etf.rpr.exceptions.HotelException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +15,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
+import static ba.unsa.etf.rpr.dao.AbstractDao.getConnection;
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 public class LogInFormController {
     public TextField usernameId;
@@ -29,7 +27,6 @@ public class LogInFormController {
     public Button cancelButtonId;
     public GridPane loginFormPaneId;
 
-    // LogInFormController controller = new LogInFormController();
     @FXML
     public void initialize(){
         usernameId.setFocusTraversable(false);
@@ -47,9 +44,36 @@ public class LogInFormController {
             greskica.setText("Please enter your password.");
         }
         else{
-            openDialog("Home", "/fxml/home.fxml", new HomeController());
+            String username = usernameId.getText();
+            String password = passwordId.getText();
+            UserDaoSQLImpl u=new UserDaoSQLImpl();
 
+            boolean flag = checkUser(username, password);
+            if (!flag) {
+                greskica.setText("Please, enter correct username and password!");
+                usernameId.clear();
+                passwordId.clear();
+            }
+            else {
+                openDialog("Home", "/fxml/home.fxml", new HomeController());
+            }
         }
+    }
+
+    public boolean checkUser(String username, String password) {
+        String sql = "SELECT * FROM USER WHERE username = ? AND password = ?";
+        try {
+            PreparedStatement s=getConnection().prepareStatement(sql);
+            s.setString(1, username);
+            s.setString(2, password);
+            ResultSet r = s.executeQuery();
+            while(r.next()){
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 
