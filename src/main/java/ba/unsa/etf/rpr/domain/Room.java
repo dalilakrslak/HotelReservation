@@ -8,7 +8,6 @@ import java.util.Objects;
 public class Room implements Idable{
     private int room_id;
     private String description;
-    private int number_of_people;
     private String price;
     private boolean status;
     private int kapacitet;
@@ -29,14 +28,6 @@ public class Room implements Idable{
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getNumber_of_people() {
-        return number_of_people;
-    }
-
-    public void setNumber_of_people(int number_of_people) {
-        this.number_of_people = number_of_people;
     }
 
     public String getPrice() {
@@ -68,7 +59,6 @@ public class Room implements Idable{
         return "Room{" +
                 "room_id=" + room_id +
                 ", description='" + description + '\'' +
-                ", number_of_people=" + number_of_people +
                 ", price='" + price + '\'' +
                 ", status=" + status +
                 ", kapacitet=" + kapacitet +
@@ -85,6 +75,6 @@ public class Room implements Idable{
 
     @Override
     public int hashCode() {
-        return Objects.hash(room_id, description, number_of_people, price, status, kapacitet);
+        return Objects.hash(room_id, description, price, status, kapacitet);
     }
 }
