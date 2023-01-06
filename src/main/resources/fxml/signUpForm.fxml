@@ -184,7 +184,7 @@
                               <Insets bottom="10.0" left="10.0" />
                            </HBox.margin>
                         </Text>
-                        <Hyperlink text="Log In">
+                        <Hyperlink fx:id="loginId" onAction="#loginOnAction" text="Log In">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
