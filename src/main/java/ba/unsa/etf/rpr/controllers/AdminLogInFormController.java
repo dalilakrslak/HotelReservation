@@ -23,6 +23,7 @@ public class AdminLogInFormController {
 
     @FXML
     public void initialize(){
-
+        usernameId.setFocusTraversable(false);
+        passwordId.setFocusTraversable(false);
     }
 }
