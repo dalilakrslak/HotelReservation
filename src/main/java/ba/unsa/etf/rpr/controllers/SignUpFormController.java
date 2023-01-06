@@ -52,7 +52,7 @@ public class SignUpFormController {
 
     }
 
-    public void signupButtonOnAction(ActionEvent actionEvent) throws HotelException {
+    public void signupButtonOnAction(ActionEvent actionEvent) throws HotelException, IOException {
         if (usernameId.getText().isBlank() == false && passwordId.getText().isBlank() == false && firstNameId.getText().isBlank()==false && lastNameId.getText().isBlank()==false && emailId.getText().isBlank() == false) {
             String username = usernameId.getText();
             UserDaoSQLImpl u = new UserDaoSQLImpl();
@@ -69,6 +69,7 @@ public class SignUpFormController {
                 user.setPassword(passwordId.getText());
                 user.setAdmin(false);
                 u.add(user);
+                openDialog("Hotel Log In", "/fxml/logInForm.fxml", new LogInFormController());
             }
         }
         else{
