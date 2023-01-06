@@ -79,8 +79,8 @@ public class SignUpFormController {
             if(passwordId.getText().isBlank() || lastNameId.getText().isBlank()) emptyPassword.setText("Password can't be empty!");
         }
     }
-    public void loginOnAction(ActionEvent actionEvent){
-
+    public void loginOnAction(ActionEvent actionEvent) throws IOException {
+        openDialog("Hotel Log In", "/fxml/logInForm.fxml", new LogInFormController());
     }
     public boolean checkUsername(String username) {
         String sql = "SELECT * FROM USER WHERE username = ?";
