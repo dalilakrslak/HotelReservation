@@ -60,7 +60,7 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="317.0">
+            <HBox alignment="CENTER" prefHeight="81.0" prefWidth="317.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
                      <HBox.margin>
@@ -82,12 +82,17 @@
             </HBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
+                  <Text fx:id="greskica" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="159.73669373989105">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="115.0" />
+                     </VBox.margin>
+                  </Text>
                   <Button fx:id="loginButtonId" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="30.0" prefWidth="164.0" style="-fx-background-color: black;" text="Log In" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="115.0" top="-10.0" />
+                        <Insets left="115.0" />
                      </VBox.margin>
                   </Button>
                   <Button fx:id="cancelButtonId" mnemonicParsing="false" onAction="#cancelOnAction" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: black;" text="Cancel" textFill="WHITE">
@@ -95,7 +100,7 @@
                         <Font size="13.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="225.0" top="55.0" />
+                        <Insets left="225.0" top="20.0" />
                      </VBox.margin>
                   </Button>
                </children>
