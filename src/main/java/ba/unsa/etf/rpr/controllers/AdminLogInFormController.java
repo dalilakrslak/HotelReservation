@@ -21,7 +21,8 @@ public class AdminLogInFormController {
     public Button cancelButtonId;
     public GridPane adminPane;
 
-    public void loginOnAction(ActionEvent actionEvent) {
+    public void loginOnAction(ActionEvent actionEvent) throws IOException {
+        openDialog("Admin", "/fxml/admin.fxml", new AdminController());
     }
 
     public void cancelOnAction(ActionEvent actionEvent) {
