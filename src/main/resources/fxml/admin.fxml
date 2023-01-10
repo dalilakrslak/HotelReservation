@@ -13,9 +13,9 @@
         <tabs>
           <Tab text="USER">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="333.0" prefWidth="924.0">
                      <children>
-                        <TableView fx:id="userTableID" prefHeight="534.0" prefWidth="723.0">
+                        <TableView fx:id="userTableID" prefHeight="534.0" prefWidth="691.0">
                            <columns>
                               <TableColumn fx:id="userIdColumn" prefWidth="84.00000154972076" text="USER_ID" />
                               <TableColumn fx:id="firstNameColumn" prefWidth="99.99999237060547" text="FIRST_NAME" />
@@ -34,7 +34,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="roomTableID" prefHeight="534.0" prefWidth="723.0">
+                        <TableView fx:id="roomTableID" prefHeight="534.0" prefWidth="407.0">
                            <columns>
                               <TableColumn fx:id="roomIdColumn" prefWidth="75.0" text="ROOM_ID" />
                               <TableColumn fx:id="descriptionColumn" prefWidth="98.39995574951172" text="DESCRIPTION" />
@@ -51,7 +51,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="reservationsTableID" prefHeight="534.0" prefWidth="723.0">
+                        <TableView fx:id="reservationsTableID" prefHeight="534.0" prefWidth="640.0">
                           <columns>
                             <TableColumn fx:id="reservationIdColumn" prefWidth="126.39999544620514" text="RESERVATION_ID" />
                             <TableColumn fx:id="checkInColumn" prefWidth="88.80004119873047" text="CHECK_IN" />
