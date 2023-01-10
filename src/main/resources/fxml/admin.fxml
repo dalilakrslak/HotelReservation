@@ -51,7 +51,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="reservationsTable" prefHeight="534.0" prefWidth="723.0">
+                        <TableView fx:id="reservationsTableID" prefHeight="534.0" prefWidth="723.0">
                           <columns>
                             <TableColumn fx:id="reservationIdColumn" prefWidth="126.39999544620514" text="RESERVATION_ID" />
                             <TableColumn fx:id="checkInColumn" prefWidth="88.80004119873047" text="CHECK_IN" />
