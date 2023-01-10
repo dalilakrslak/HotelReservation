@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.ReservationsManager;
 import ba.unsa.etf.rpr.business.RoomManager;
 import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.domain.Room;
@@ -28,9 +29,12 @@ public class AdminController {
     public TableColumn<Room, Boolean> statusColumn;
     public TableColumn<Room, Integer> kapacitetColumn;
     public TableView roomTableID;
+
+    public TableView reservationsTableID;
     public BorderPane tablePaneID;
     UserManager userManager = new UserManager();
     RoomManager roomManager = new RoomManager();
+    ReservationsManager reservationsManager = new ReservationsManager();
     @FXML
     public void initialize() {
         userIdColumn.setCellValueFactory(cellData -> {
@@ -67,6 +71,14 @@ public class AdminController {
         try{
             roomTableID.setItems(FXCollections.observableList(roomManager.getAll()));
             roomTableID.refresh();
+        } catch (HotelException e){
+            e.printStackTrace();
+        }
+    }
+    void refreshReservations(){
+        try{
+            reservationsTableID.setItems(FXCollections.observableList(reservationsManager.getAll()));
+            reservationsTableID.refresh();
         } catch (HotelException e){
             e.printStackTrace();
         }
