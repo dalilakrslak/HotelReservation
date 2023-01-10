@@ -32,6 +32,10 @@ public class AdminLogInFormController {
     public void initialize(){
         usernameId.setFocusTraversable(false);
         passwordId.setFocusTraversable(false);
+        usernameId.textProperty().addListener((obs, oldText, newText) -> {
+            usernameId.setFocusTraversable(true);
+            passwordId.setFocusTraversable(true);
+        });
     }
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
         if(usernameId.getText().isBlank() == true && passwordId.getText().isBlank() == true){
