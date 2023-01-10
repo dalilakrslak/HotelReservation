@@ -31,6 +31,10 @@ public class LogInFormController {
     public void initialize(){
         usernameId.setFocusTraversable(false);
         passwordId.setFocusTraversable(false);
+        usernameId.textProperty().addListener((obs, oldText, newText) -> {
+            usernameId.setFocusTraversable(true);
+            passwordId.setFocusTraversable(true);
+        });
     }
 
     public void loginButtonOnAction(ActionEvent actionEvent) throws IOException {
