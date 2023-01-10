@@ -34,7 +34,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="roomTable" prefHeight="534.0" prefWidth="723.0">
+                        <TableView fx:id="roomTableID" prefHeight="534.0" prefWidth="723.0">
                            <columns>
                               <TableColumn fx:id="roomIdColumn" prefWidth="75.0" text="ROOM_ID" />
                               <TableColumn fx:id="descriptionColumn" prefWidth="98.39995574951172" text="DESCRIPTION" />
