@@ -1,6 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane fx:id="adminPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="924.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" />
+<BorderPane fx:id="tablePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="924.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.AdminController">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="USER">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="userTableID" prefHeight="534.0" prefWidth="723.0">
+                           <columns>
+                              <TableColumn fx:id="userIdColumn" prefWidth="84.00000154972076" text="USER_ID" />
+                              <TableColumn fx:id="firstNameColumn" prefWidth="99.99999237060547" text="FIRST_NAME" />
+                              <TableColumn fx:id="lastNameColumn" prefWidth="99.20001220703125" text="LAST_NAME" />
+                              <TableColumn fx:id="emailColumn" prefWidth="112.79998779296875" text="EMAIL" />
+                              <TableColumn fx:id="usernameColumn" prefWidth="114.39999389648438" text="USERNAME" />
+                              <TableColumn fx:id="passwordColumn" prefWidth="103.199951171875" text="PASSWORD" />
+                              <TableColumn fx:id="adminColumn" prefWidth="75.0" text="ADMIN" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="ROOM">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="roomTable" prefHeight="534.0" prefWidth="723.0">
+                           <columns>
+                              <TableColumn fx:id="roomIdColumn" prefWidth="75.0" text="ROOM_ID" />
+                              <TableColumn fx:id="descriptionColumn" prefWidth="98.39995574951172" text="DESCRIPTION" />
+                              <TableColumn fx:id="priceColumn" prefWidth="80.79998779296875" text="PRICE" />
+                              <TableColumn fx:id="statusColumn" prefWidth="75.0" text="STATUS" />
+                              <TableColumn fx:id="kapacitetColumn" prefWidth="75.0" text="KAPACITET" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="RESERVATIONS">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="reservationsTable" prefHeight="534.0" prefWidth="723.0">
+                          <columns>
+                            <TableColumn fx:id="reservationIdColumn" prefWidth="126.39999544620514" text="RESERVATION_ID" />
+                            <TableColumn fx:id="checkInColumn" prefWidth="88.80004119873047" text="CHECK_IN" />
+                              <TableColumn fx:id="checkOutColumn" prefWidth="93.5999755859375" text="CHECK_OUT" />
+                              <TableColumn fx:id="nopColumn" prefWidth="141.5999755859375" text="NUMBER_OF_PEOPLE" />
+                              <TableColumn fx:id="personColumn" minWidth="0.0" prefWidth="92.80007934570312" text="PERSON_ID" />
+                              <TableColumn fx:id="roomColumn" minWidth="0.0" prefWidth="93.60003662109375" text="ROOM_ID" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
