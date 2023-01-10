@@ -43,6 +43,13 @@ public class SignUpFormController {
         emailId.setFocusTraversable(false);
         usernameId.setFocusTraversable(false);
         passwordId.setFocusTraversable(false);
+        firstNameId.textProperty().addListener((obs, oldText, newText) -> {
+            firstNameId.setFocusTraversable(true);
+            lastNameId.setFocusTraversable(true);
+            emailId.setFocusTraversable(true);
+            usernameId.setFocusTraversable(true);
+            passwordId.setFocusTraversable(true);
+        });
         usernameId.textProperty().addListener((obs, oldValue, newValue)->{
             if(newValue.length()>=5)
                 invalidUsernameId.setText("");
