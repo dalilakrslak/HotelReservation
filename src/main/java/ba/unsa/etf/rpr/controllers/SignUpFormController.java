@@ -51,7 +51,7 @@ public class SignUpFormController {
             if(newValue.length()>=5)
                 invalidUsernameId.setText("");
             else
-                invalidUsernameId.setText("Username must have atleast 5 characters!");
+                invalidUsernameId.setText("Username must have at least 5 characters!");
         });
 
     }
