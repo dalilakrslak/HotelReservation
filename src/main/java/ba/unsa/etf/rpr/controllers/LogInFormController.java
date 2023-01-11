@@ -1,9 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
-import java.sql.*;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
-import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +17,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static ba.unsa.etf.rpr.dao.AbstractDao.getConnection;
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 public class LogInFormController {
     public TextField usernameId;
@@ -53,10 +50,8 @@ public class LogInFormController {
         else{
             String username = usernameId.getText();
             String password = passwordId.getText();
-            UserDaoSQLImpl u=new UserDaoSQLImpl();
-            User flag = DaoFactory.userDao().checkUser(username,password);
-            //boolean flag = checkUser(username, password);
-            if (flag == null) {
+            User user = DaoFactory.userDao().checkUser(username,password);
+            if (user == null) {
                 greskica.setText("Please, enter correct username and password!");
                 usernameId.clear();
                 passwordId.clear();
