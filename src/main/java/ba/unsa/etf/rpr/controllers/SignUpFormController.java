@@ -17,11 +17,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-import static ba.unsa.etf.rpr.dao.AbstractDao.getConnection;
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class SignUpFormController {
@@ -91,20 +87,7 @@ public class SignUpFormController {
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
         openDialog("Hotel Log In", "/fxml/logInForm.fxml", new LogInFormController());
     }
-    /*public boolean checkUsername(String username) {
-        String sql = "SELECT * FROM USER WHERE username = ?";
-        try {
-            PreparedStatement s=getConnection().prepareStatement(sql);
-            s.setString(1, username);
-            ResultSet r = s.executeQuery();
-            while(r.next()){
-                return true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }*/
+
     private void openDialog(String title, String file, Object controller) throws IOException {
         final Stage homeStage = (Stage) signUpPane.getScene().getWindow();
         Stage stage = new Stage();
