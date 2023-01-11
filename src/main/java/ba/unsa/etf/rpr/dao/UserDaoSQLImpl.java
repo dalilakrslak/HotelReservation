@@ -3,7 +3,9 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.HotelException;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -47,5 +49,28 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
         item.put("password", object.getPassword());
         item.put("admin", object.isAdmin());
         return item;
+    }
+    public User checkUser(String username, String password) {
+        String sql = "SELECT * FROM USER WHERE username = ? AND password = ?";
+        User user = null;
+        try {
+            List<User> u = DaoFactory.userDao().getAll();
+            PreparedStatement s=getConnection().prepareStatement(sql);
+            s.setString(1, username);
+            s.setString(2, password);
+            ResultSet r = s.executeQuery();
+
+            if(!r.next()) return null;
+
+            user = row2object(r);
+            return user;
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (HotelException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
     }
 }
