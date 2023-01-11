@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
-import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,11 +14,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import static ba.unsa.etf.rpr.dao.AbstractDao.getConnection;
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class AdminLogInFormController {
@@ -52,15 +46,14 @@ public class AdminLogInFormController {
         else {
             String username = usernameId.getText();
             String password = passwordId.getText();
-            UserDaoSQLImpl u=new UserDaoSQLImpl();
-            User flag = DaoFactory.userDao().checkUser(username,password);
+            User admin = DaoFactory.userDao().checkUser(username,password);
 
-            if (flag == null) {
+            if (admin == null) {
                 greskica.setText("Account doesn't exist!");
                 usernameId.clear();
                 passwordId.clear();
             }
-            else if(!flag.isAdmin()){
+            else if(!admin.isAdmin()){
                 greskica.setText("You're not admin!");
             }
             else {
