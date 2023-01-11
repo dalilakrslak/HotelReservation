@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
+import ba.unsa.etf.rpr.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,12 +53,15 @@ public class AdminLogInFormController {
             String username = usernameId.getText();
             String password = passwordId.getText();
             UserDaoSQLImpl u=new UserDaoSQLImpl();
+            User flag = DaoFactory.userDao().checkUser(username,password);
 
-            boolean flag = checkUser(username, password);
-            if (!flag) {
+            if (flag == null) {
                 greskica.setText("Account doesn't exist!");
                 usernameId.clear();
                 passwordId.clear();
+            }
+            else if(!flag.isAdmin()){
+                greskica.setText("You're not admin!");
             }
             else {
                 openDialog("Admin", "/fxml/admin.fxml", new AdminController());
@@ -67,22 +72,6 @@ public class AdminLogInFormController {
     public void cancelOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) cancelButtonId.getScene().getWindow();
         stage.close();
-    }
-
-    public boolean checkUser(String username, String password) {
-        String sql = "SELECT * FROM USER WHERE username = ? AND password = ?";
-        try {
-            PreparedStatement s=getConnection().prepareStatement(sql);
-            s.setString(1, username);
-            s.setString(2, password);
-            ResultSet r = s.executeQuery();
-            while(r.next()){
-                return true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 
 
