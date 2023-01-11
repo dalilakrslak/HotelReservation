@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.HotelException;
@@ -64,7 +65,7 @@ public class SignUpFormController {
             String username = usernameId.getText();
             UserDaoSQLImpl u = new UserDaoSQLImpl();
             User user = new User();
-            boolean flag = checkUsername(username);
+            boolean flag = DaoFactory.userDao().checkUsername(username);
             if (flag) {
                 invalidUsernameId.setText("Username already exists!");
             }
@@ -90,7 +91,7 @@ public class SignUpFormController {
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
         openDialog("Hotel Log In", "/fxml/logInForm.fxml", new LogInFormController());
     }
-    public boolean checkUsername(String username) {
+    /*public boolean checkUsername(String username) {
         String sql = "SELECT * FROM USER WHERE username = ?";
         try {
             PreparedStatement s=getConnection().prepareStatement(sql);
@@ -103,7 +104,7 @@ public class SignUpFormController {
             e.printStackTrace();
         }
         return false;
-    }
+    }*/
     private void openDialog(String title, String file, Object controller) throws IOException {
         final Stage homeStage = (Stage) signUpPane.getScene().getWindow();
         Stage stage = new Stage();
