@@ -73,4 +73,18 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
         }
         return user;
     }
+    public boolean checkUsername(String username) {
+        String sql = "SELECT * FROM USER WHERE username = ?";
+        try {
+            PreparedStatement s=getConnection().prepareStatement(sql);
+            s.setString(1, username);
+            ResultSet r = s.executeQuery();
+            while(r.next()){
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
