@@ -1,7 +1,10 @@
 package ba.unsa.etf.rpr.controllers;
 
 import java.sql.*;
+
+import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
+import ba.unsa.etf.rpr.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,9 +54,9 @@ public class LogInFormController {
             String username = usernameId.getText();
             String password = passwordId.getText();
             UserDaoSQLImpl u=new UserDaoSQLImpl();
-
-            boolean flag = checkUser(username, password);
-            if (!flag) {
+            User flag = DaoFactory.userDao().checkUser(username,password);
+            //boolean flag = checkUser(username, password);
+            if (flag == null) {
                 greskica.setText("Please, enter correct username and password!");
                 usernameId.clear();
                 passwordId.clear();
@@ -63,23 +66,6 @@ public class LogInFormController {
             }
         }
     }
-
-    public boolean checkUser(String username, String password) {
-        String sql = "SELECT * FROM USER WHERE username = ? AND password = ?";
-        try {
-            PreparedStatement s=getConnection().prepareStatement(sql);
-            s.setString(1, username);
-            s.setString(2, password);
-            ResultSet r = s.executeQuery();
-            while(r.next()){
-                return true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
 
     public void registerOnAction(ActionEvent actionEvent) throws IOException {
         openDialog("Hotel Sign Up", "/fxml/signUpForm.fxml", new SignUpFormController());
