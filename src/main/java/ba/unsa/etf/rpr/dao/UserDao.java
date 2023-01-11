@@ -9,4 +9,5 @@ import ba.unsa.etf.rpr.domain.User;
  */
 public interface UserDao extends Dao<User>{
     public User checkUser(String username, String password);
+    public boolean checkUsername(String username);
 }
