@@ -34,13 +34,13 @@ public class AdminLogInFormController {
         });
     }
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
-        if(usernameId.getText().isBlank() == true && passwordId.getText().isBlank() == true){
+        if(usernameId.getText().isBlank() && passwordId.getText().isBlank()){
             greskica.setText("Fields can't be empty!");
         }
-        else if(usernameId.getText().isBlank() == true && passwordId.getText().isBlank() == false){
+        else if(usernameId.getText().isBlank() && !passwordId.getText().isBlank()){
             greskica.setText("Please enter your username.");
         }
-        else if(usernameId.getText().isBlank() == false && passwordId.getText().isBlank() == true){
+        else if(!usernameId.getText().isBlank() && passwordId.getText().isBlank()){
             greskica.setText("Please enter your password.");
         }
         else {
