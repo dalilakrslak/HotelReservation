@@ -60,7 +60,7 @@ public class SignUpFormController {
     }
 
     public void signupButtonOnAction(ActionEvent actionEvent) throws HotelException, IOException {
-        if (usernameId.getText().isBlank() == false && passwordId.getText().isBlank() == false && firstNameId.getText().isBlank()==false && lastNameId.getText().isBlank()==false && emailId.getText().isBlank() == false) {
+        if (!usernameId.getText().isBlank() && !passwordId.getText().isBlank() && !firstNameId.getText().isBlank() && !lastNameId.getText().isBlank() && !emailId.getText().isBlank()) {
             String username = usernameId.getText();
             UserDaoSQLImpl u = new UserDaoSQLImpl();
             User user = new User();
