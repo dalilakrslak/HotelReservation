@@ -166,7 +166,7 @@
             </Text>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="signupId" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="27.0" prefWidth="210.0" style="-fx-background-color: black;" text="Sign Up" textFill="WHITE">
+                  <Button fx:id="signupId" defaultButton="true" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="27.0" prefWidth="210.0" style="-fx-background-color: black;" text="Sign Up" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
