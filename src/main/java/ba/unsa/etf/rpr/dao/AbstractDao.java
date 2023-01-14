@@ -61,15 +61,15 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     public abstract Map<String, Object> object2row(T object);
 
     public T getById(int id) throws HotelException {
-        return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
+        return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE " + this.tableName + "_id = ?", new Object[]{id});
     }
 
     public List<T> getAll() throws HotelException {
-        return executeQuery("SELECT * FROM "+ tableName, null);
+        return executeQuery("SELECT * FROM "+ this.tableName, null);
     }
 
     public void delete(int id) throws HotelException {
-        String sql = "DELETE FROM "+tableName+" WHERE id = ?";
+        String sql = "DELETE FROM "+tableName+" WHERE " + tableName + "_id = ?";
         try{
             PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setObject(1, id);
@@ -117,7 +117,9 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                 .append(tableName)
                 .append(" SET ")
                 .append(updateColumns)
-                .append(" WHERE id = ?");
+                .append(" WHERE ")
+                .append(tableName)
+                .append("_id = ?");
 
         try{
             PreparedStatement stmt = getConnection().prepareStatement(builder.toString());
