@@ -86,7 +86,7 @@
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Button fx:id="loginButtonId" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: black;" text="Log In" textFill="WHITE">
+                  <Button fx:id="loginButtonId" defaultButton="true" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: black;" text="Log In" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="73.0" />
                      </VBox.margin>
