@@ -8,6 +8,7 @@ import ba.unsa.etf.rpr.domain.Room;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.HotelException;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -16,6 +17,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
 import java.sql.Date;
+
+import static java.lang.String.valueOf;
 
 public class AdminController {
     public TableColumn<User, Integer> userIdColumn;
@@ -35,10 +38,9 @@ public class AdminController {
     public TableColumn<Reservations, Integer> reservationIdColumn;
     public TableColumn<Reservations, Date> checkInColumn;
     public TableColumn<Reservations, Date> checkOutColumn;
-    public TableColumn<Reservations, Integer> nopColumn;
-    public TableColumn<Reservations, Integer> personColumn;
-    public TableColumn<Reservations, Integer> roomColumn;
-    public TableView reservationsTableID;
+    public TableColumn<Reservations, String> personColumn;
+    public TableColumn<Reservations, String> roomColumn;
+    public TableView<Reservations> reservationsTableID;
     public BorderPane tablePaneID;
     UserManager userManager = new UserManager();
     RoomManager roomManager = new RoomManager();
@@ -73,9 +75,8 @@ public class AdminController {
         });
         checkInColumn.setCellValueFactory(new PropertyValueFactory<Reservations, Date>("check_in"));
         checkOutColumn.setCellValueFactory(new PropertyValueFactory<Reservations, Date>("check_out"));
-        nopColumn.setCellValueFactory(new PropertyValueFactory<Reservations, Integer>("number_of_people"));
-        roomColumn.setCellValueFactory(new PropertyValueFactory<Reservations, Integer>("room_id"));
-        personColumn.setCellValueFactory(new PropertyValueFactory<Reservations, Integer>("person_id"));
+        roomColumn.setCellValueFactory(param -> new SimpleStringProperty((valueOf(param.getValue().getRoom_id().getId()))));
+        personColumn.setCellValueFactory(param -> new SimpleStringProperty((valueOf(param.getValue().getPerson_id().getId()))));
         refreshReservations();
     }
     void refreshUser(){
