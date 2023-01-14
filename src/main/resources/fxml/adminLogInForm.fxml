@@ -87,7 +87,7 @@
                         <Insets bottom="10.0" left="115.0" />
                      </VBox.margin>
                   </Text>
-                  <Button fx:id="loginButtonId" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="30.0" prefWidth="164.0" style="-fx-background-color: black;" text="Log In" textFill="WHITE">
+                  <Button fx:id="loginButtonId" defaultButton="true" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="30.0" prefWidth="164.0" style="-fx-background-color: black;" text="Log In" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -95,7 +95,7 @@
                         <Insets left="115.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="cancelButtonId" mnemonicParsing="false" onAction="#cancelOnAction" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: black;" text="Cancel" textFill="WHITE">
+                  <Button fx:id="cancelButtonId" cancelButton="true" mnemonicParsing="false" onAction="#cancelOnAction" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: black;" text="Cancel" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
