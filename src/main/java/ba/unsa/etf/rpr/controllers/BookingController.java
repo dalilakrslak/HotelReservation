@@ -13,8 +13,8 @@ public class BookingController {
 
     public BookingController(){
         rooms.add("Single bed");
-        rooms.add("Room for couples");
-        rooms.add("Two bed");
+        rooms.add("Room for couple");
+        rooms.add("Two beds");
         rooms.add("Family room");
     }
     @FXML
