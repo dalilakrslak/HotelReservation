@@ -49,8 +49,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     /**
      * Method for closing connection manually, should be called from finally block
      */
-    public void removeConnection(){
-        if(this.connection!=null) {
+    public static void closeConnection() {
+        if(connection!=null) {
             try {
                 connection.close();
             } catch (SQLException e) {
@@ -60,6 +60,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             }
         }
     }
+
     /**
      * Method for mapping ResultSet into Object
      * @param rs - result set from database
