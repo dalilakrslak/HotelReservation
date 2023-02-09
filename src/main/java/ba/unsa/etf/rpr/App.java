@@ -30,5 +30,7 @@ public class App {
         options.addOption(getUsers);
         return options;
     }
+    public static void main(String[] args) throws Exception{
 
+    }
 }
