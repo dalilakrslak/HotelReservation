@@ -20,4 +20,15 @@ public class App {
         printWriter.close();
     }
 
+    public static Options addOptions() {
+        Options options = new Options();
+        options.addOption(addRoom);
+        options.addOption(deleteRoom);
+        options.addOption(updateRoom);
+        options.addOption(getRooms);
+        options.addOption(getReservations);
+        options.addOption(getUsers);
+        return options;
+    }
+
 }
