@@ -8,6 +8,19 @@ import ba.unsa.etf.rpr.domain.User;
  * @author Dalila Krslak
  */
 public interface UserDao extends Dao<User>{
+    /**
+     * Returns user whose username and password are given as parameters.
+     * @param username search String for username of user
+     * @param password search String for password of user
+     * @return User instance
+     */
     public User checkUser(String username, String password);
+
+    /**
+     * Returns true if username, given as parameter, exists in database.
+     *
+     * @param username search String for username
+     * @return boolean
+     */
     public boolean checkUsername(String username);
 }
