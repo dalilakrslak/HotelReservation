@@ -16,11 +16,17 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     private static Connection connection = null;
     private String tableName;
 
+    /**
+     * Constructor for class AbstractDao that sets connection name and calls createConnection method.
+     * @param tableName String
+     */
     public AbstractDao(String tableName) {
         this.tableName = tableName;
         if(connection==null) createConnection();
     }
-
+    /**
+     * Creates connection to database using properties file called db.properties.
+     */
     private static void createConnection(){
         if(AbstractDao.connection==null) {
             try {
@@ -40,16 +46,9 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         return AbstractDao.connection;
     }
 
-    public void setConnection(Connection connection){
-        if(AbstractDao.connection!=null) {
-            try {
-                AbstractDao.connection.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        AbstractDao.connection = connection;
-    }
+    /**
+     * Method for closing connection manually, should be called from finally block
+     */
     public void removeConnection(){
         if(this.connection!=null) {
             try {
@@ -76,14 +75,29 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      */
     public abstract Map<String, Object> object2row(T object);
 
+    /**
+     * Fetches object defined by the given id.
+     * @param id primary key of entity
+     * @return object that has the given id
+     * @throws HotelException in case of an error with database
+     */
     public T getById(int id) throws HotelException {
         return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE " + this.tableName + "_id = ?", new Object[]{id});
     }
-
+    /**
+     * Fetches all objects from the given table.
+     * @return List of objects
+     * @throws HotelException in case of an error with database
+     */
     public List<T> getAll() throws HotelException {
         return executeQuery("SELECT * FROM "+ this.tableName, null);
     }
 
+    /**
+     * Deletes object defined by the id, given as parameter, from the table.
+     * @param id  primary key of entity
+     * @throws HotelException in case of an error with db
+     */
     public void delete(int id) throws HotelException {
         String sql = "DELETE FROM "+tableName+" WHERE " + tableName + "_id = ?";
         try{
@@ -95,6 +109,12 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         }
     }
 
+    /**
+     * Adds given object to a table.
+     * @param item bean for saving to database
+     * @return item bean
+     * @throws HotelException in case of an error with db
+     */
     public T add(T item) throws HotelException{
         Map<String, Object> row = object2row(item);
         Map.Entry<String, String> columns = prepareInsertParts(row);
@@ -125,6 +145,12 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         }
     }
 
+    /**
+     * Updates object defined by the given id.
+     * @param item bean to be updated. id must be populated
+     * @return item bean
+     * @throws HotelException in case of an error with database
+     */
     public T update(T item) throws HotelException{
         Map<String, Object> row = object2row(item);
         String updateColumns = prepareUpdateParts(row);
