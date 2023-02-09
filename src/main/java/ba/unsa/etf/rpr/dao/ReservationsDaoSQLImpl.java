@@ -7,13 +7,33 @@ import java.sql.ResultSet;
 import java.util.Map;
 import java.util.TreeMap;
 
-
+/**
+ * MySQL Implementation of DAO
+ * @author Dalila Krslak
+ */
 public class ReservationsDaoSQLImpl extends AbstractDao<Reservations> implements ReservationsDao{
-
+    private static ReservationsDaoSQLImpl instance = null;
     public ReservationsDaoSQLImpl() {
         super("RESERVATIONS");
     }
-
+    /**
+     * @author Dalila Krslak
+     * @return ReservationsDaoSQLImpl
+     * We don't need more than one object for CRUD operations on table 'RESERVATIONS' so we will use Singleton
+     * This method will call private constructor in instance==null and then return that instance
+     */
+    public static ReservationsDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new ReservationsDaoSQLImpl();
+        return instance;
+    }
+    /**
+     * Removes the singleton instance of the ReservationsDaoSQLImpl class.
+     */
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
+    }
     @Override
     public Reservations row2object(ResultSet rs) throws HotelException {
         try{
