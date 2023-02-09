@@ -1,7 +1,8 @@
 package ba.unsa.etf.rpr.domain;
 
 /**
- * Interface that forces all POJO beans to have ID field. Name is stupid but per standard
+ * Interface that forces all POJO beans to have ID field.
+ * @author Dalila Krslak
  */
 public interface Idable {
 
