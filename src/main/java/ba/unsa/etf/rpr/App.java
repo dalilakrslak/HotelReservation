@@ -21,7 +21,7 @@ public class App {
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
         PrintWriter printWriter = new PrintWriter(System.out);
-        helpFormatter.printUsage(printWriter, 150, "java -jar projekat1.jar [option] 'something else if needed' ");
+        helpFormatter.printUsage(printWriter, 150, "java -jar HotelReservation.jar [option] 'something else if needed' ");
         helpFormatter.printOptions(printWriter, 150, options, 2, 7);
         printWriter.close();
     }
