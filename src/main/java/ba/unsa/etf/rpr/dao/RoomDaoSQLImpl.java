@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.domain.Room;
 import ba.unsa.etf.rpr.exceptions.HotelException;
 
 import java.sql.ResultSet;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -39,5 +40,15 @@ public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao{
         item.put("status", object.isStatus());
         item.put("kapacitet", object.getKapacitet());
         return item;
+    }
+
+    @Override
+    public Room getByDescription(String description) throws HotelException {
+        try {
+            List<Room> rooms = executeQuery("SELECT * FROM ROOM WHERE description = ?", new Object[]{description});
+            return rooms.get(0);
+        } catch (HotelException e) {
+            throw new HotelException(e.getMessage(), e);
+        }
     }
 }
