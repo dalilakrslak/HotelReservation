@@ -16,7 +16,7 @@ public class App {
 
     private static final Option getRooms = new Option("getR", "get-rooms",false, "Printing all rooms from database");
     private static final Option getUsers = new Option("getU", "get-users",false, "Printing all users from database");
-    private static final Option getReservations = new Option("getR", "get-reservations",false, "Printing all reservations from database");
+    private static final Option getReservations = new Option("getRes", "get-reservations",false, "Printing all reservations from database");
 
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
