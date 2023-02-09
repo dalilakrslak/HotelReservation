@@ -15,9 +15,27 @@ import java.util.TreeMap;
  * @author Dalila Krslak
  */
 public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
-
+    private static UserDaoSQLImpl instance = null;
     public UserDaoSQLImpl(){
         super("USER");
+    }
+    /**
+     * @author Dalila Krslak
+     * @return UserDaoSQLImpl
+     * We don't need more than one object for CRUD operations on table 'USER' so we will use Singleton
+     * This method will call private constructor in instance==null and then return that instance
+     */
+    public static UserDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new UserDaoSQLImpl();
+        return instance;
+    }
+    /**
+     * Removes the singleton instance of the UserDaoSQLImpl class.
+     */
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
     }
 
     @Override
