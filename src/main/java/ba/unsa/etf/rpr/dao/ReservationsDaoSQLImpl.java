@@ -34,6 +34,12 @@ public class ReservationsDaoSQLImpl extends AbstractDao<Reservations> implements
         if(instance!=null)
             instance=null;
     }
+    /**
+     *Maps a row from the result set to a Reservations object
+     *@param rs The result set from the database query
+     *@return Reservations object with properties set according to the values in the result set
+     *@throws HotelException if there is an error when retrieving values from the result set
+     */
     @Override
     public Reservations row2object(ResultSet rs) throws HotelException {
         try{
@@ -50,6 +56,10 @@ public class ReservationsDaoSQLImpl extends AbstractDao<Reservations> implements
         }
     }
 
+    /**
+     * @param object - object to be mapped
+     * @return map representation of object
+     */
     @Override
     public Map<String, Object> object2row(Reservations object) {
         Map<String, Object> item = new TreeMap<>();
