@@ -31,6 +31,9 @@ public class App {
         return options;
     }
     public static void main(String[] args) throws Exception{
+        Options options = addOptions();
+        CommandLineParser commandLineParser = new DefaultParser();
+        CommandLine cl = commandLineParser.parse(options, args);
 
     }
 }
