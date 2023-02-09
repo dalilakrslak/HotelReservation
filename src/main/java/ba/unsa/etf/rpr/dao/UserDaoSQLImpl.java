@@ -37,7 +37,12 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
         if(instance!=null)
             instance=null;
     }
-
+    /**
+     *Maps a row from the result set to a User object
+     *@param rs The result set from the database query
+     *@return User object with properties set according to the values in the result set
+     *@throws HotelException if there is an error when retrieving values from the result set
+     */
     @Override
     public User row2object(ResultSet rs) throws HotelException {
         try{
@@ -55,7 +60,10 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
             throw new HotelException(e.getMessage(), e);
         }
     }
-
+    /**
+     * @param object - object to be mapped
+     * @return map representation of object
+     */
     @Override
     public Map<String, Object> object2row(User object) {
         Map<String, Object> item = new TreeMap<>();
@@ -68,6 +76,12 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
         item.put("admin", object.isAdmin());
         return item;
     }
+    /**
+     * Returns user whose username and password are given as parameters.
+     * @param username search String for username of user
+     * @param password search String for password of user
+     * @return User instance
+     */
     public User checkUser(String username, String password) {
         String sql = "SELECT * FROM USER WHERE username = ? AND password = ?";
         User user = null;
@@ -91,6 +105,12 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
         }
         return user;
     }
+    /**
+     * Returns true if username, given as parameter, exists in database.
+     *
+     * @param username search String for username
+     * @return boolean
+     */
     public boolean checkUsername(String username) {
         String sql = "SELECT * FROM USER WHERE username = ?";
         try {
