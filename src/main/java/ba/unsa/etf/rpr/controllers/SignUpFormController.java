@@ -20,6 +20,10 @@ import java.io.IOException;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
+/**
+ * Controller for Sign Up Form for guests
+ * @author Dalila Krslak
+ */
 public class SignUpFormController {
     public TextField usernameId;
     public TextField firstNameId;
@@ -33,6 +37,9 @@ public class SignUpFormController {
     public Button signupId;
     public Hyperlink loginId;
     public GridPane signUpPane;
+    /**
+     * Removes focus from fields and checks if username has at least 5 characters.
+     */
     @FXML
     public void initialize(){
         firstNameId.setFocusTraversable(false);
@@ -55,7 +62,11 @@ public class SignUpFormController {
         });
 
     }
-
+    /**
+     * Checks if fields are empty, if the account exists and opens 'Home' window
+     * @param actionEvent ActionEvent
+     * @throws IOException in case of an error
+     */
     public void signupButtonOnAction(ActionEvent actionEvent) throws HotelException, IOException {
         if (!usernameId.getText().isBlank() && !passwordId.getText().isBlank() && !firstNameId.getText().isBlank() && !lastNameId.getText().isBlank() && !emailId.getText().isBlank()) {
             String username = usernameId.getText();
@@ -84,10 +95,21 @@ public class SignUpFormController {
             if(passwordId.getText().isBlank() || lastNameId.getText().isBlank()) emptyPassword.setText("Password can't be empty!");
         }
     }
+    /**
+     * Opens Log In form for guests
+     * @param actionEvent ActionEvent
+     * @throws IOException in case of an error
+     */
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
         openDialog("Hotel Log In", "/fxml/logInForm.fxml", new LogInFormController());
     }
-
+    /**
+     * Opens a dialog window with the provided FXML file path
+     * @param title String for window Title
+     * @param file path of the FXML file
+     * @param controller Object
+     * @throws IOException in case of an error
+     */
     private void openDialog(String title, String file, Object controller) throws IOException {
         final Stage homeStage = (Stage) signUpPane.getScene().getWindow();
         Stage stage = new Stage();
