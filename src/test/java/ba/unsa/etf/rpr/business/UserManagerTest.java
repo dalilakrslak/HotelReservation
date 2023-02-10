@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests for UserManager class
@@ -90,5 +89,13 @@ public class UserManagerTest {
             throw new RuntimeException(e);
         }
         assertTrue(test);
+    }
+
+    @Test
+    void testValidateUsername(){
+        User user = new User();
+        user.setUsername("daki");
+        HotelException thrown = assertThrows(HotelException.class, () -> userManager.validateUserName(user.getUsername()));
+        assertEquals("Username must be between 5 and 15 chars", thrown.getMessage());
     }
 }
