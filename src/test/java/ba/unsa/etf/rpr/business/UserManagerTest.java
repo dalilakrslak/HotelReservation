@@ -97,7 +97,7 @@ public class UserManagerTest {
     void testValidateUsername(){
         User user = new User();
         user.setUsername("daki");
-        HotelException thrown = assertThrows(HotelException.class, () -> userManager.validateUserName(user.getUsername()));
+        HotelException thrown = assertThrows(HotelException.class, () -> userManager.validateUsername(user.getUsername()));
         assertEquals("Username must be between 5 and 15 chars", thrown.getMessage());
     }
 }
