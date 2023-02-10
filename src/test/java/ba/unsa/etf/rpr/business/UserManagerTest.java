@@ -100,6 +100,10 @@ public class UserManagerTest {
         HotelException thrown = assertThrows(HotelException.class, () -> userManager.validateUsername(user.getUsername()));
         assertEquals("Username must be between 5 and 15 chars", thrown.getMessage());
     }
+
+    /**
+     * Testing searchById method
+     */
     @Test
     void testSearchById(){
         try {
