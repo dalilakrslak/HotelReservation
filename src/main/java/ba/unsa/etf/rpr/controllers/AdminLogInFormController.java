@@ -16,6 +16,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
+/**
+ * Controller for Log In Form for admin
+ * @author Dalila Krslak
+ */
 public class AdminLogInFormController {
     public TextField usernameId;
     public PasswordField passwordId;
@@ -24,6 +28,9 @@ public class AdminLogInFormController {
     public GridPane adminPane;
     public Text greskica;
 
+    /**
+     * Removes focus from fields
+     */
     @FXML
     public void initialize(){
         usernameId.setFocusTraversable(false);
@@ -33,6 +40,12 @@ public class AdminLogInFormController {
             passwordId.setFocusTraversable(true);
         });
     }
+
+    /**
+     * Checks if fields are empty, if the account exists, if it's an admin and opens 'Admin' window
+     * @param actionEvent ActionEvent
+     * @throws IOException in case of an error
+     */
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
         if(usernameId.getText().isBlank() && passwordId.getText().isBlank()){
             greskica.setText("Fields can't be empty!");
@@ -62,12 +75,22 @@ public class AdminLogInFormController {
         }
     }
 
+    /**
+     * Retrieves the stage of the current window and calls the close() method to close it.
+     * @param actionEvent ActionEvent
+     */
     public void cancelOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) cancelButtonId.getScene().getWindow();
         stage.close();
     }
 
-
+    /**
+     * Opens a dialog window with the provided FXML file path
+     * @param title String for window Title
+     * @param file path of the FXML file
+     * @param controller Object
+     * @throws IOException in case of an error
+     */
     private void openDialog(String title, String file, Object controller) throws IOException {
         final Stage homeStage = (Stage) adminPane.getScene().getWindow();
         Stage stage = new Stage();
