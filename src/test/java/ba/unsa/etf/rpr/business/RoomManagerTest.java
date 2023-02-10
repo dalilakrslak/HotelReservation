@@ -42,6 +42,9 @@ public class RoomManagerTest {
         }
         assertTrue(test);
     }
+    /**
+     * Testing delete method
+     */
     @Test
     void testDelete(){
         Room room = new Room();
