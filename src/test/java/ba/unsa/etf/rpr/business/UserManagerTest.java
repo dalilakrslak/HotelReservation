@@ -47,7 +47,7 @@ public class UserManagerTest {
     }
 
     /**
-     * Test for getAll method
+     * Testing getAll method
      */
     @Test
     void testGetAll(){
@@ -55,6 +55,10 @@ public class UserManagerTest {
             userManager.getAll();
         });
     }
+
+    /**
+     * Testing delete method
+     */
     @Test
     void testDelete(){
         User user = new User();
