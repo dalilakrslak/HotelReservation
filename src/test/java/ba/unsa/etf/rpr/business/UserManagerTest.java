@@ -90,7 +90,9 @@ public class UserManagerTest {
         }
         assertTrue(test);
     }
-
+    /**
+     * Testing validateUsername method
+     */
     @Test
     void testValidateUsername(){
         User user = new User();
