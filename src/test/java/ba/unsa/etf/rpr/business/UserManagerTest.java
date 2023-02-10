@@ -14,6 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class UserManagerTest {
     UserManager userManager = new UserManager();
+
+    /**
+     * Testing add method
+     */
     @Test
     void testAdd(){
         User user = new User();
