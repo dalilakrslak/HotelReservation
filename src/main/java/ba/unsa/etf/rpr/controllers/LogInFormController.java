@@ -18,6 +18,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
+
+/**
+ * Controller for Log In Form for guests
+ * @author Dalila Krslak
+ */
 public class LogInFormController {
     public TextField usernameId;
     public PasswordField passwordId;
@@ -27,6 +32,9 @@ public class LogInFormController {
     public Button cancelButtonId;
     public GridPane loginFormPaneId;
 
+    /**
+     * Removes focus from fields
+     */
     @FXML
     public void initialize(){
         usernameId.setFocusTraversable(false);
@@ -36,7 +44,11 @@ public class LogInFormController {
             passwordId.setFocusTraversable(true);
         });
     }
-
+    /**
+     * Checks if fields are empty, if the account exists and opens 'Home' window
+     * @param actionEvent ActionEvent
+     * @throws IOException in case of an error
+     */
     public void loginButtonOnAction(ActionEvent actionEvent) throws IOException {
         if(usernameId.getText().isBlank() == true && passwordId.getText().isBlank() == true){
             greskica.setText("Please enter your username and password.");
@@ -62,13 +74,29 @@ public class LogInFormController {
         }
     }
 
+    /**
+     * Opens Sign Up form for guests
+     * @param actionEvent ActionEvent
+     * @throws IOException in case of an error
+     */
     public void registerOnAction(ActionEvent actionEvent) throws IOException {
         openDialog("Hotel Sign Up", "/fxml/signUpForm.fxml", new SignUpFormController());
     }
+    /**
+     * Retrieves the stage of the current window and calls the close() method to close it.
+     * @param actionEvent ActionEvent
+     */
     public void cancelButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) cancelButtonId.getScene().getWindow();
         stage.close();
     }
+    /**
+     * Opens a dialog window with the provided FXML file path
+     * @param title String for window Title
+     * @param file path of the FXML file
+     * @param controller Object
+     * @throws IOException in case of an error
+     */
     private void openDialog(String title, String file, Object controller) throws IOException {
         final Stage homeStage = (Stage) loginFormPaneId.getScene().getWindow();
         Stage stage = new Stage();
