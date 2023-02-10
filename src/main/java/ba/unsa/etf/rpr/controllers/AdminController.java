@@ -20,6 +20,11 @@ import java.sql.Date;
 
 import static java.lang.String.valueOf;
 
+/**
+ * Controller for Admin window
+ * @author Dalila Krslak
+ */
+
 public class AdminController {
     public TableColumn<User, Integer> userIdColumn;
     public TableColumn<User, String> firstNameColumn;
@@ -45,6 +50,10 @@ public class AdminController {
     UserManager userManager = new UserManager();
     RoomManager roomManager = new RoomManager();
     ReservationsManager reservationsManager = new ReservationsManager();
+
+    /**
+     *Initializes the userTable, roomTable and reservationsTable with values from database for users, rooms and reservations.
+     */
     @FXML
     public void initialize() {
         userIdColumn.setCellValueFactory(cellData -> {
@@ -79,6 +88,9 @@ public class AdminController {
         personColumn.setCellValueFactory(param -> new SimpleStringProperty((valueOf(param.getValue().getPerson_id().getId()))));
         refreshReservations();
     }
+    /**
+     * Refreshes user table with current data
+     */
     void refreshUser(){
         try{
             userTableID.setItems(FXCollections.observableList(userManager.getAll()));
@@ -87,6 +99,9 @@ public class AdminController {
             e.printStackTrace();
         }
     }
+    /**
+     * Refreshes room table with current data
+     */
     void refreshRoom(){
         try{
             roomTableID.setItems(FXCollections.observableList(roomManager.getAll()));
@@ -95,6 +110,10 @@ public class AdminController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Refreshes reservations table with current data
+     */
     void refreshReservations(){
         try{
             reservationsTableID.setItems(FXCollections.observableList(reservationsManager.getAll()));
