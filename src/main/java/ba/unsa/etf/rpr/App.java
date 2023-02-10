@@ -9,6 +9,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * CLI (Command Line Interface) implementation in following class
+ * @author Dalila Krslak
+ */
 public class App {
     private static final Option addRoom = new Option("add","add-room",false, "Adding new room to database");
     private static final Option deleteRoom = new Option("delete","delete-room",false, "Deleting room from database");
@@ -18,6 +22,10 @@ public class App {
     private static final Option getUsers = new Option("getU", "get-users",false, "Printing all users from database");
     private static final Option getReservations = new Option("getRes", "get-reservations",false, "Printing all reservations from database");
 
+    /**
+     * Printing on console screen how to properly use commands.
+     * @param options available options
+     */
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
         PrintWriter printWriter = new PrintWriter(System.out);
@@ -25,7 +33,10 @@ public class App {
         helpFormatter.printOptions(printWriter, 150, options, 2, 7);
         printWriter.close();
     }
-
+    /**
+     * Adding options that can be used on console screen.
+     * @return all options
+     */
     public static Options addOptions() {
         Options options = new Options();
         options.addOption(addRoom);
@@ -36,6 +47,12 @@ public class App {
         options.addOption(getUsers);
         return options;
     }
+
+    /**
+     * Manipulates with console screen commands
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception{
         Options options = addOptions();
         CommandLineParser commandLineParser = new DefaultParser();
