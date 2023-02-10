@@ -15,6 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class RoomManagerTest {
     RoomManager roomManager = new RoomManager();
+    /**
+     * Testing add method
+     */
     @Test
     void testAdd(){
         Room room = new Room();
