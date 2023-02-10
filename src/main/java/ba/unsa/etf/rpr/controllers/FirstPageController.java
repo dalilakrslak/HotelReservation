@@ -9,10 +9,20 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
+
+/**
+ * Controller for the first window of the App
+ * @author Dalila Krslak
+ */
 public class FirstPageController {
     public Button adminId;
     public Button guestId;
 
+    /**
+     * Opens Log In for admin
+     * @param actionEvent ActionEvent
+     * @throws IOException in case of an error
+     */
     public void adminOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/adminLogInForm.fxml"));
@@ -23,6 +33,12 @@ public class FirstPageController {
         stage.setResizable(false);
         stage.show();
     }
+
+    /**
+     * Opens Log In for guests
+     * @param actionEvent ActionEvent
+     * @throws IOException in case of an error
+     */
     public void guestOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/logInForm.fxml"));
