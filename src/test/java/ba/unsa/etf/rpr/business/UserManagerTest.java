@@ -55,4 +55,36 @@ public class UserManagerTest {
             userManager.getAll();
         });
     }
+    @Test
+    void testDelete(){
+        User user = new User();
+        user.setFirst_name("Zerina");
+        user.setLast_name("Tanovic");
+        user.setUsername("ztanovic1");
+        user.setEmail("ztanovic1@etf.unsa.ba");
+        user.setPassword("iusius");
+        user.setAdmin(false);
+        boolean test = true;
+        try{
+            userManager.add(user);
+            List<User> list = userManager.getAll();
+            for(User user1: list){
+                if(user1.getUsername().equals("ztanovic1")){
+                    userManager.delete(user1.getId());
+                    break;
+                }
+            }
+            list = userManager.getAll();
+            for (User user1: list){
+                if(user1.getUsername().equals("ztanovic1")){
+                    test = false;
+                    break;
+                }
+            }
+        }
+        catch(HotelException e){
+            throw new RuntimeException(e);
+        }
+        assertTrue(test);
+    }
 }
