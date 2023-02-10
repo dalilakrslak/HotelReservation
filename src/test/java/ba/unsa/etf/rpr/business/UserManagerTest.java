@@ -46,6 +46,9 @@ public class UserManagerTest {
         assertTrue(test);
     }
 
+    /**
+     * Test for getAll method
+     */
     @Test
     void testGetAll(){
         assertDoesNotThrow(() -> {
