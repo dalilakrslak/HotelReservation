@@ -42,4 +42,34 @@ public class RoomManagerTest {
         }
         assertTrue(test);
     }
+    @Test
+    void testDelete(){
+        Room room = new Room();
+        room.setDescription("ocean view");
+        room.setPrice("$100");
+        room.setStatus(false);
+        room.setKapacitet(15);
+        boolean test = true;
+        try{
+            roomManager.add(room);
+            List<Room> list = roomManager.getAll();
+            for(Room room1: list){
+                if(room1.getDescription().equals("ocean view")){
+                    roomManager.delete(room1.getId());
+                    break;
+                }
+            }
+            list = roomManager.getAll();
+            for (Room room1: list){
+                if(room1.getDescription().equals("ocean view")){
+                    test = false;
+                    break;
+                }
+            }
+        }
+        catch(HotelException e){
+            throw new RuntimeException(e);
+        }
+        assertTrue(test);
+    }
 }
