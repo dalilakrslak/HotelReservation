@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+/**
+ * Tests for UserDao class
+ * @author Dalila Krslak
+ */
 public class UserDaoTest {
     /**
      * tests setters and getters in UserDao
