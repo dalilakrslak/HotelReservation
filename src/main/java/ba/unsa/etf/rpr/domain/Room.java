@@ -12,6 +12,17 @@ public class Room implements Idable{
     private boolean status;
     private int kapacitet;
 
+    public Room(){
+
+    }
+
+    public Room(String description, String price, boolean status, int kapacitet) {
+        this.description = description;
+        this.price = price;
+        this.status = status;
+        this.kapacitet = kapacitet;
+    }
+
     @Override
     public void setId(int id) {
         this.room_id = id;
