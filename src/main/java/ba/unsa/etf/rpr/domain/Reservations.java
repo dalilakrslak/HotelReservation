@@ -13,7 +13,16 @@ public class Reservations implements Idable{
     private Room room_id;
     private User person_id;
 
+    public Reservations(){
 
+    }
+
+    public Reservations(Date check_in, Date check_out, Room room_id, User person_id) {
+        this.check_in = check_in;
+        this.check_out = check_out;
+        this.room_id = room_id;
+        this.person_id = person_id;
+    }
 
     @Override
     public void setId(int id) {
