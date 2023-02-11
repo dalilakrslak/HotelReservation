@@ -119,5 +119,13 @@
             </Button>
          </children>
       </VBox>
+      <ImageView fitHeight="32.0" fitWidth="37.0" onMouseClicked="#backOnAction" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+         <image>
+            <Image url="@../img/back.png" />
+         </image>
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </ImageView>
    </children>
 </GridPane>
