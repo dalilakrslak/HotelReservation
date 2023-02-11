@@ -31,4 +31,16 @@ public class ReservationsTest {
         assertNotNull(reservations.getPerson_id());
         assertNotNull(reservations.getRoom_id());
     }
+    @Test
+    public void testToString(){
+        Reservations reservations = new Reservations();
+        String output = "Reservations{" +
+                "reservation_id=" + reservations.getId() +
+                ", check_in=" + reservations.getCheck_in() +
+                ", check_out=" + reservations.getCheck_out() +
+                ", room_id=" + reservations.getRoom_id() +
+                ", person_id=" + reservations.getPerson_id() +
+                '}';
+        assertEquals(output, reservations.toString());
+    }
 }
