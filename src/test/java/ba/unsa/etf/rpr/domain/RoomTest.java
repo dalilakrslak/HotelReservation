@@ -20,6 +20,9 @@ public class RoomTest {
         assertTrue(room.isStatus());
         assertEquals(10, room.getKapacitet());
     }
+    /**
+     * tests setters and getters
+     */
     @Test
     public void testSettersAndGetters() {
         Room room = new Room();
