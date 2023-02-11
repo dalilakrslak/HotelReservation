@@ -9,6 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Dalila Krslak
  */
 public class RoomTest {
+    /**
+     * tests constructor
+     */
     @Test
     public void testConstructor(){
         Room room = new Room("one-bed", "$30", true, 10);
