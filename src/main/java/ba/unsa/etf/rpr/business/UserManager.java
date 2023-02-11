@@ -89,5 +89,7 @@ public class UserManager {
     public User getById(int userId) throws HotelException{
         return DaoFactory.userDao().getById(userId);
     }
-
+    public int getLoggedInId(String username, String password) throws HotelException {
+        return DaoFactory.userDao().getLoggedInId(username, password);
+    }
 }
