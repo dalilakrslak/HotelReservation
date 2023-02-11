@@ -85,8 +85,13 @@ public class BookingController {
             alert.showAndWait();
         }
     }
-    public void backOnAction(ActionEvent actionEvent){
 
+    /**
+     * goes back to Home window
+     * @throws IOException in case of an error
+     */
+    public void backOnAction() throws IOException {
+        openDialog("Home", "/fxml/home.fxml", new HomeController());
     }
     /**
      * Opens a dialog window with the provided FXML file path
