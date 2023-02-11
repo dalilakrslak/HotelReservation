@@ -11,14 +11,21 @@ import ba.unsa.etf.rpr.exceptions.HotelException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import static ba.unsa.etf.rpr.controllers.LogInFormController.user;
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
+
 /**
  * Controller for form for Booking a room
  * @author Dalila Krslak
@@ -28,6 +35,7 @@ public class BookingController {
     private ArrayList<String> rooms = new ArrayList<>();
     public DatePicker checkInId;
     public DatePicker checkOutId;
+    public GridPane bookingPane;
     /**
      * Constructor which adds choices in ChoiceBox
      */
@@ -79,5 +87,23 @@ public class BookingController {
     }
     public void backOnAction(ActionEvent actionEvent){
 
+    }
+    /**
+     * Opens a dialog window with the provided FXML file path
+     * @param title String for window Title
+     * @param file path of the FXML file
+     * @param controller Object
+     * @throws IOException in case of an error
+     */
+    private void openDialog(String title, String file, Object controller) throws IOException {
+        final Stage homeStage = (Stage) bookingPane.getScene().getWindow();
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(file));
+        loader.setController(controller);
+        stage.setTitle(title);
+        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        homeStage.hide();
+        stage.show();
     }
 }
