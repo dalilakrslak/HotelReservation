@@ -14,6 +14,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @author Dalila Krslak
  */
 public class ReservationsTest {
+    /**
+     * tests setters and getters
+     */
     @Test
     public void testSettersAndGetters(){
         Reservations reservations = new Reservations();
