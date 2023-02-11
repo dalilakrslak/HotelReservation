@@ -2,8 +2,7 @@ package ba.unsa.etf.rpr.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests for User class
@@ -45,6 +44,9 @@ public class UserTest {
         assertFalse(user.isAdmin());
     }
 
+    /**
+     * tests toString method
+     */
     @Test
     public void testToString(){
         User user = new User("Niko", "Nikic", "nnikic1@etf.unsa.ba", false, "nnikic1", "topic");
@@ -57,5 +59,15 @@ public class UserTest {
                 ", password='topic" + '\'' +
                 '}';
         assertEquals(output, user.toString());
+    }
+
+    /**
+     * tests testEquals method
+     */
+    @Test
+    public void testEquals(){
+        User user1 = new User("Niko", "Nikic", "nnikic1@etf.unsa.ba", false, "nnikic1", "topic");
+        User user2 = new User("Niko", "Nikic", "nnikic1@etf.unsa.ba", false, "nnikic1", "topic");
+        assertTrue(user1.equals(user2));
     }
 }
