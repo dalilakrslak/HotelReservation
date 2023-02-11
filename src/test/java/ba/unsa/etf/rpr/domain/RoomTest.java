@@ -64,4 +64,14 @@ public class RoomTest {
         assertTrue(room.isStatus());
         assertEquals(10, room.getKapacitet());
     }
+
+    /**
+     * tests Equals method
+     */
+    @Test
+    public void testEquals(){
+        Room room1 = new Room("one-bed", "$30", true, 10);
+        Room room2 = new Room("one-bed", "$30", true, 10);
+        assertTrue(room1.equals(room2));
+    }
 }
