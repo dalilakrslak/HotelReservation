@@ -125,4 +125,14 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
         }
         return false;
     }
+
+    public int getLoggedInId(String username, String password) throws HotelException {
+        try {
+            List<User> l = executeQuery("SELECT * FROM USER WHERE username = ? AND password = ?", new Object[]{username, password});
+            if (l.isEmpty()) return 0;
+            return l.get(0).getId();
+        } catch (HotelException e) {
+            throw new HotelException(e.getMessage(), e);
+        }
+    }
 }
