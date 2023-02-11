@@ -66,7 +66,22 @@ public class RoomTest {
     }
 
     /**
-     * tests Equals method
+     * tests toString method
+     */
+    @Test
+    public void testToString(){
+        Room room = new Room("one-bed", "$30", true, 10);
+        String output = "Room{" +
+                "room_id=0" +
+                ", description='one-bed" + '\'' +
+                ", price='$30" + '\'' +
+                ", status=true" +
+                ", kapacitet=10" +
+                '}';
+        assertEquals(output, room.toString());
+    }
+    /**
+     * tests equals method
      */
     @Test
     public void testEquals(){
