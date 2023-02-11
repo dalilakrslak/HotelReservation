@@ -1,8 +1,10 @@
 package ba.unsa.etf.rpr.controllers;
 
 
+import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.exceptions.HotelException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +33,8 @@ public class LogInFormController {
     public Hyperlink registerId;
     public Button cancelButtonId;
     public GridPane loginFormPaneId;
+    public static User user = new User();
+    private UserManager userManager = new UserManager();
 
     /**
      * Removes focus from fields
@@ -49,21 +53,23 @@ public class LogInFormController {
      * @param actionEvent ActionEvent
      * @throws IOException in case of an error
      */
-    public void loginButtonOnAction(ActionEvent actionEvent) throws IOException {
-        if(usernameId.getText().isBlank() == true && passwordId.getText().isBlank() == true){
+    public void loginButtonOnAction(ActionEvent actionEvent) throws IOException, HotelException {
+        if(usernameId.getText().isBlank() && passwordId.getText().isBlank()){
             greskica.setText("Please enter your username and password.");
         }
-        else if(usernameId.getText().isBlank() == true && passwordId.getText().isBlank() == false){
+        else if(usernameId.getText().isBlank() && !passwordId.getText().isBlank()){
             greskica.setText("Please enter your username.");
         }
-        else if(usernameId.getText().isBlank() == false && passwordId.getText().isBlank() == true){
+        else if(!usernameId.getText().isBlank() && passwordId.getText().isBlank()){
             greskica.setText("Please enter your password.");
         }
         else{
             String username = usernameId.getText();
             String password = passwordId.getText();
-            User user = DaoFactory.userDao().checkUser(username,password);
-            if (user == null) {
+            int logInID = userManager.getLoggedInId(username, password);
+            user = userManager.getById(logInID);
+            User user1 = DaoFactory.userDao().checkUser(username,password);
+            if (user1 == null) {
                 greskica.setText("Please, enter correct username and password!");
                 usernameId.clear();
                 passwordId.clear();
