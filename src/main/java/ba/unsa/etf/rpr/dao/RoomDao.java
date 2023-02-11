@@ -9,4 +9,5 @@ import ba.unsa.etf.rpr.exceptions.HotelException;
  * @author Dalila Krslak
  */
 public interface RoomDao extends Dao<Room>{
+    public Room getByDescription(String description) throws HotelException;
 }
