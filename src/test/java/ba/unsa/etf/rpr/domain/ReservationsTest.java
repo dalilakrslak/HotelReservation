@@ -31,6 +31,10 @@ public class ReservationsTest {
         assertNotNull(reservations.getPerson_id());
         assertNotNull(reservations.getRoom_id());
     }
+
+    /**
+     * tests toString method
+     */
     @Test
     public void testToString(){
         Reservations reservations = new Reservations();
