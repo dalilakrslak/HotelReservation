@@ -30,4 +30,14 @@ public class UserTest {
         assertEquals("topic", user.getPassword());
         assertFalse(user.isAdmin());
     }
+    @Test
+    public void testConstructor(){
+        User user = new User("Niko", "Nikic", "nnikic1@etf.unsa.ba", false, "nnikic1", "topic");
+        assertEquals("Niko", user.getFirst_name());
+        assertEquals("Nikic", user.getLast_name());
+        assertEquals("nnikic1@etf.unsa.ba", user.getEmail());
+        assertEquals("nnikic1", user.getUsername());
+        assertEquals("topic", user.getPassword());
+        assertFalse(user.isAdmin());
+    }
 }
