@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class UserDaoTest {
+    /**
+     * tests setters and getters in UserDao
+     */
     @Test
     public void testUserSettersAndGetters() {
         User user = new User();
