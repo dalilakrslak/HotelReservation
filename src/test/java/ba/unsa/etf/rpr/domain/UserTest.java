@@ -1,21 +1,20 @@
-package ba.unsa.etf.rpr.dao;
+package ba.unsa.etf.rpr.domain;
 
-import ba.unsa.etf.rpr.domain.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
- * Tests for UserDao class
+ * Tests for User class
  * @author Dalila Krslak
  */
-public class UserDaoTest {
+public class UserTest {
     /**
-     * tests setters and getters in UserDao
+     * tests setters and getters in User
      */
     @Test
-    public void testUserSettersAndGetters() {
+    public void testSettersAndGetters() {
         User user = new User();
         user.setFirst_name("Niko");
         user.setLast_name("Nikic");
