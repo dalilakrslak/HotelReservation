@@ -11,10 +11,12 @@ import ba.unsa.etf.rpr.exceptions.HotelException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import static ba.unsa.etf.rpr.controllers.LogInFormController.user;
 /**
@@ -45,18 +47,35 @@ public class BookingController {
     }
 
     public void confirmOnAction(ActionEvent actionEvent) throws HotelException {
-        java.sql.Date checkIn = Date.valueOf(checkInId.getValue());
-        java.sql.Date checkOut = Date.valueOf(checkOutId.getValue());
-        String roomDescription = roomId.getValue();
-        RoomManager roomManager = new RoomManager();
-        Room room = roomManager.getByDescription(roomDescription);
-        ReservationsDaoSQLImpl r = new ReservationsDaoSQLImpl();
-        Reservations reservations = new Reservations();
-        reservations.setCheck_in(checkIn);
-        reservations.setCheck_out(checkOut);
-        reservations.setPerson_id(user);
-        reservations.setRoom_id(room);
-        r.add(reservations);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        LocalDate checkIn = checkInId.getValue();
+        LocalDate checkOut = checkOutId.getValue();
+
+        if(checkIn.isBefore(LocalDate.now()) || checkOut.isBefore(LocalDate.now()) || checkOut.isBefore(checkIn) || checkIn.isAfter(checkOut)){
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid date!");
+            alert.showAndWait();
+        }
+        else {
+            java.sql.Date checkIn1 = Date.valueOf(checkInId.getValue());
+            java.sql.Date checkOut2 = Date.valueOf(checkOutId.getValue());
+            String roomDescription = roomId.getValue();
+            RoomManager roomManager = new RoomManager();
+            Room room = roomManager.getByDescription(roomDescription);
+            ReservationsDaoSQLImpl r = new ReservationsDaoSQLImpl();
+            Reservations reservations = new Reservations();
+            reservations.setCheck_in(checkIn1);
+            reservations.setCheck_out(checkOut2);
+            reservations.setPerson_id(user);
+            reservations.setRoom_id(room);
+            r.add(reservations);
+            alert.setTitle("Success!");
+            alert.setHeaderText(null);
+            alert.setContentText("Booked successfully!");
+            alert.showAndWait();
+        }
     }
 
 }
