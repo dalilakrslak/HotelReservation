@@ -60,5 +60,7 @@ public class RoomManager {
     public Room getById(int roomId) throws HotelException{
         return DaoFactory.roomDao().getById(roomId);
     }
-
+    public Room getByDescription(String description) throws HotelException{
+        return DaoFactory.roomDao().getByDescription(description);
+    }
 }
