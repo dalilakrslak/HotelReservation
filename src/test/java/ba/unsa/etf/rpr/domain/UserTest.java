@@ -44,4 +44,18 @@ public class UserTest {
         assertEquals("topic", user.getPassword());
         assertFalse(user.isAdmin());
     }
+
+    @Test
+    public void testToString(){
+        User user = new User("Niko", "Nikic", "nnikic1@etf.unsa.ba", false, "nnikic1", "topic");
+        String output = "User{user_id=0" +
+                ", first_name='Niko" + '\'' +
+                ", last_name='Nikic" + '\'' +
+                ", email='nnikic1@etf.unsa.ba" + '\'' +
+                ", admin=false" +
+                ", username='nnikic1" + '\'' +
+                ", password='topic" + '\'' +
+                '}';
+        assertEquals(output, user.toString());
+    }
 }
