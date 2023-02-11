@@ -62,7 +62,7 @@ public class UserTest {
     }
 
     /**
-     * tests testEquals method
+     * tests Equals method
      */
     @Test
     public void testEquals(){
