@@ -16,6 +16,10 @@ import java.util.TreeMap;
  */
 public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
     private static UserDaoSQLImpl instance = null;
+
+    /**
+     * Constructor for UserDaoSQLImpl
+     */
     public UserDaoSQLImpl(){
         super("USER");
     }
@@ -125,7 +129,13 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
         }
         return false;
     }
-
+    /**
+     * Fetches User object from table USER defined by username and password given as parameter
+     * @param username String value that represents username
+     * @param password String value that represents password
+     * @return int value for id
+     * @throws HotelException in case of an error
+     */
     public int getLoggedInId(String username, String password) throws HotelException {
         try {
             List<User> l = executeQuery("SELECT * FROM USER WHERE username = ? AND password = ?", new Object[]{username, password});
