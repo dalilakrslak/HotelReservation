@@ -9,18 +9,14 @@ public class Room implements Idable{
     private int room_id;
     private String description;
     private String price;
-    private boolean status;
-    private int kapacitet;
 
     public Room(){
 
     }
 
-    public Room(String description, String price, boolean status, int kapacitet) {
+    public Room(String description, String price) {
         this.description = description;
         this.price = price;
-        this.status = status;
-        this.kapacitet = kapacitet;
     }
 
     @Override
@@ -49,21 +45,6 @@ public class Room implements Idable{
         this.price = price;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public int getKapacitet() {
-        return kapacitet;
-    }
-
-    public void setKapacitet(int kapacitet) {
-        this.kapacitet = kapacitet;
-    }
 
     @Override
     public String toString() {
@@ -71,8 +52,6 @@ public class Room implements Idable{
                 "room_id=" + room_id +
                 ", description='" + description + '\'' +
                 ", price='" + price + '\'' +
-                ", status=" + status +
-                ", kapacitet=" + kapacitet +
                 '}';
     }
 
@@ -86,6 +65,6 @@ public class Room implements Idable{
 
     @Override
     public int hashCode() {
-        return Objects.hash(room_id, description, price, status, kapacitet);
+        return Objects.hash(room_id, description, price);
     }
 }
