@@ -19,7 +19,7 @@ public class RoomTest {
     private RoomManager roomManager;
     @Mock
     private RoomDao roomDao;
-    public Room room  =  new Room("one-bed", "$30", true, 10);
+    public Room room  =  new Room("one-bed", "$30");
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -42,11 +42,9 @@ public class RoomTest {
      */
     @Test
     public void testConstructor(){
-        Room room = new Room("one-bed", "$30", true, 10);
+        Room room = new Room("one-bed", "$30");
         assertEquals("one-bed", room.getDescription());
         assertEquals("$30", room.getPrice());
-        assertTrue(room.isStatus());
-        assertEquals(10, room.getKapacitet());
     }
     /**
      * tests setters and getters
@@ -56,13 +54,9 @@ public class RoomTest {
         Room room = new Room();
         room.setDescription("one-bed");
         room.setPrice("$30");
-        room.setStatus(true);
-        room.setKapacitet(10);
 
         assertEquals("one-bed", room.getDescription());
         assertEquals("$30", room.getPrice());
-        assertTrue(room.isStatus());
-        assertEquals(10, room.getKapacitet());
     }
 
     /**
@@ -70,13 +64,11 @@ public class RoomTest {
      */
     @Test
     public void testToString(){
-        Room room = new Room("one-bed", "$30", true, 10);
+        Room room = new Room("one-bed", "$30");
         String output = "Room{" +
                 "room_id=0" +
                 ", description='one-bed" + '\'' +
                 ", price='$30" + '\'' +
-                ", status=true" +
-                ", kapacitet=10" +
                 '}';
         assertEquals(output, room.toString());
     }
@@ -85,8 +77,8 @@ public class RoomTest {
      */
     @Test
     public void testEquals(){
-        Room room1 = new Room("one-bed", "$30", true, 10);
-        Room room2 = new Room("one-bed", "$30", true, 10);
+        Room room1 = new Room("one-bed", "$30");
+        Room room2 = new Room("one-bed", "$30");
         assertTrue(room1.equals(room2));
     }
 }
