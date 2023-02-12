@@ -20,17 +20,31 @@ public class RoomTest {
     @Mock
     private RoomDao roomDao;
     public Room room  =  new Room("one-bed", "$30");
+
+    /**
+     * initializes fields annotated with Mockito annotations
+     * initializes roomManager
+     */
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         roomManager = new RoomManager();
     }
+
+    /**
+     * tests method add
+     * @throws HotelException in case of an error
+     */
     @Test
     public void addTest() throws HotelException {
         roomDao.add(room);
         verify(roomDao).add(room);
     }
 
+    /**
+     * tests method update
+     * @throws Exception in case of an error
+     */
     @Test
     void updateTest() throws Exception {
         room.setDescription("two-bed");
