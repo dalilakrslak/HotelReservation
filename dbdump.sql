@@ -35,7 +35,7 @@ CREATE TABLE `RESERVATIONS` (
   KEY `person_id_idx` (`person_id`),
   CONSTRAINT `person_id` FOREIGN KEY (`person_id`) REFERENCES `USER` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `room_id` FOREIGN KEY (`room_id`) REFERENCES `ROOM` (`room_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `RESERVATIONS` (
 
 LOCK TABLES `RESERVATIONS` WRITE;
 /*!40000 ALTER TABLE `RESERVATIONS` DISABLE KEYS */;
-INSERT INTO `RESERVATIONS` VALUES (1,'2023-04-04','2023-05-05',1,4);
+INSERT INTO `RESERVATIONS` VALUES (1,'2023-04-04','2023-05-05',1,4),(2,'2023-02-14','2023-02-15',2,6),(3,'2023-02-23','2023-02-24',1,2),(4,'2023-03-01','2023-03-03',4,7);
 /*!40000 ALTER TABLE `RESERVATIONS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,10 +59,8 @@ CREATE TABLE `ROOM` (
   `room_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(225) NOT NULL,
   `price` varchar(15) NOT NULL,
-  `status` tinyint(4) NOT NULL,
-  `kapacitet` int(11) NOT NULL,
   PRIMARY KEY (`room_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +69,7 @@ CREATE TABLE `ROOM` (
 
 LOCK TABLES `ROOM` WRITE;
 /*!40000 ALTER TABLE `ROOM` DISABLE KEYS */;
-INSERT INTO `ROOM` VALUES (1,'Single bed','$50',1,20),(2,'For couples','$120',1,20),(3,'Two beds','$120',1,20),(4,'Family room','$200',1,10);
+INSERT INTO `ROOM` VALUES (1,'Single bed','$50'),(2,'For couples','$120'),(3,'Two beds','$120'),(4,'Family room','$200');
 /*!40000 ALTER TABLE `ROOM` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +89,7 @@ CREATE TABLE `USER` (
   `password` varchar(45) NOT NULL,
   `admin` tinyint(4) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,13 +98,9 @@ CREATE TABLE `USER` (
 
 LOCK TABLES `USER` WRITE;
 /*!40000 ALTER TABLE `USER` DISABLE KEYS */;
-INSERT INTO `USER` VALUES (1,'Dalila','Krslak','dalilakrslak@gmail.com','dalilakrslak','123456',1),(2,'Nejra','Adilovi?','nadilovic2@etf.unsa.ba','nadilovic2','nejranejra',0),(3,'Niko','Nikic','nikonikic@gmail.com','nikonikoc','121212',0),(4,'Lejla','Nuhic','lnuhic1@etf.unsa.ba','lejlanuhic','lejlalejla',0),(5,'ds','sd','fs','fe','de',0),(6,'Amar','Tahirovic','atahirovic3@etf.unsa.ba','atahirovic1','061222',0),(7,'Benjamin','Kadic','bkadic1@etf.unsa.ba','bkadic1','benjo',0);
+INSERT INTO `USER` VALUES (1,'Dalila','Krslak','dalilakrslak@gmail.com','dalilakrslak','123456',1),(2,'Nejra','Adilovic','nadilovic2@etf.unsa.ba','nadilovic2','nejranejra',0),(4,'Lejla','Nuhic','lnuhic1@etf.unsa.ba','lejlanuhic','lejlalejla',0),(6,'Amar','Tahirovic','atahirovic3@etf.unsa.ba','atahirovic1','061222',0),(7,'Benjamin','Kadic','bkadic1@etf.unsa.ba','bkadic1','benjo',0);
 /*!40000 ALTER TABLE `USER` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping routines for database 'sql7583374'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -117,4 +111,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-14 19:27:38
+-- Dump completed on 2023-02-12  1:33:53
