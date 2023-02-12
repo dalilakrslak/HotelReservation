@@ -84,7 +84,8 @@ public class SignUpFormController {
                 user.setPassword(passwordId.getText());
                 user.setAdmin(false);
                 u.add(user);
-                openDialog("Home", "/fxml/home.fxml", new HomeController());
+                //openDialog("Home", "/fxml/home.fxml", new HomeController());
+                openDialog("Hotel Log In", "/fxml/logInForm.fxml", new LogInFormController());
             }
         }
         else{
