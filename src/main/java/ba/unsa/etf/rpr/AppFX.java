@@ -29,7 +29,7 @@ public class AppFX extends Application
 
     /**
      * Main runnable method
-     * @param args
+     * @param args String[]
      */
     public static void main( String[] args )
     {
