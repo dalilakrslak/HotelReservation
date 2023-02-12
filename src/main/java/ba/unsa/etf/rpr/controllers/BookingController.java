@@ -15,16 +15,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static ba.unsa.etf.rpr.controllers.LogInFormController.user;
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
@@ -56,8 +57,42 @@ public class BookingController {
     @FXML
     public void initialize(){
         roomId.setItems(FXCollections.observableList(rooms));
+        initializeDatePicker();
     }
-
+    private void initializeDatePicker() {
+        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item.isBefore(LocalDate.now())) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #B6B6B4;");
+                        }
+                    }
+                };
+            }
+        };
+        checkInId.setDayCellFactory(dayCellFactory);
+        final Callback<DatePicker, DateCell> dayCellFactory2 = new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item.isBefore(LocalDate.now()) || item.isBefore(checkInId.getValue())) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #B6B6B4;");
+                        }
+                    }
+                };
+            }
+        };
+        checkOutId.setDayCellFactory(dayCellFactory2);
+    }
     /**
      * Method for making a reservation and inserting it in database
      * @param actionEvent ActionEvent
@@ -65,34 +100,22 @@ public class BookingController {
      */
     public void confirmOnAction(ActionEvent actionEvent) throws HotelException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-        LocalDate checkIn = checkInId.getValue();
-        LocalDate checkOut = checkOutId.getValue();
-
-        if(checkIn.isBefore(LocalDate.now()) || checkOut.isBefore(LocalDate.now()) || checkOut.isBefore(checkIn) || checkIn.isAfter(checkOut)){
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Invalid date!");
-            alert.showAndWait();
-        }
-        else {
-            java.sql.Date checkIn1 = Date.valueOf(checkInId.getValue());
-            java.sql.Date checkOut2 = Date.valueOf(checkOutId.getValue());
-            String roomDescription = roomId.getValue();
-            RoomManager roomManager = new RoomManager();
-            Room room = roomManager.getByDescription(roomDescription);
-            ReservationsDaoSQLImpl r = new ReservationsDaoSQLImpl();
-            Reservations reservations = new Reservations();
-            reservations.setCheck_in(checkIn1);
-            reservations.setCheck_out(checkOut2);
-            reservations.setPerson_id(user);
-            reservations.setRoom_id(room);
-            r.add(reservations);
-            alert.setTitle("Success!");
-            alert.setHeaderText(null);
-            alert.setContentText("Booked successfully!");
-            alert.showAndWait();
-        }
+        java.sql.Date checkIn1 = Date.valueOf(checkInId.getValue());
+        java.sql.Date checkOut2 = Date.valueOf(checkOutId.getValue());
+        String roomDescription = roomId.getValue();
+        RoomManager roomManager = new RoomManager();
+        Room room = roomManager.getByDescription(roomDescription);
+        ReservationsDaoSQLImpl r = new ReservationsDaoSQLImpl();
+        Reservations reservations = new Reservations();
+        reservations.setCheck_in(checkIn1);
+        reservations.setCheck_out(checkOut2);
+        reservations.setPerson_id(user);
+        reservations.setRoom_id(room);
+        r.add(reservations);
+        alert.setTitle("Success!");
+        alert.setHeaderText(null);
+        alert.setContentText("Booked successfully!");
+        alert.showAndWait();
     }
 
     /**
