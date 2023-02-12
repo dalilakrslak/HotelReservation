@@ -3,20 +3,15 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.RoomManager;
 import ba.unsa.etf.rpr.dao.ReservationsDaoSQLImpl;
-import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Reservations;
 import ba.unsa.etf.rpr.domain.Room;
-import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.HotelException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -40,6 +35,7 @@ public class BookingController {
     public DatePicker checkInId;
     public DatePicker checkOutId;
     public GridPane bookingPane;
+    public Label priceLabel;
     private final RoomManager roomManager = new RoomManager();
     private final List<Room> room = roomManager.getAll();
     /**
@@ -57,8 +53,13 @@ public class BookingController {
     @FXML
     public void initialize(){
         roomId.setItems(FXCollections.observableList(rooms));
+        initializeRoomChoice();
         initializeDatePicker();
     }
+
+    /**
+     * method for initialization of DatePicker
+     */
     private void initializeDatePicker() {
         final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
             @Override
@@ -92,6 +93,21 @@ public class BookingController {
             }
         };
         checkOutId.setDayCellFactory(dayCellFactory2);
+    }
+
+    /**
+     * method to initialize room price
+     */
+    public void initializeRoomChoice(){
+        roomId.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue ) -> {
+            try {
+                String name = rooms.get(Integer.parseInt(newValue.toString()));
+                Room r = roomManager.getByDescription(name);
+                priceLabel.setText(r.getPrice());
+            } catch (HotelException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
     /**
      * Method for making a reservation and inserting it in database
