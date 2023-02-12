@@ -57,7 +57,7 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </opaqueInsets>
                <children>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="308.0" text="Single bed" textAlignment="RIGHT">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="308.0" text="Single bed - $50" textAlignment="RIGHT">
                      <font>
                         <Font name="Book Antiqua" size="16.0" />
                      </font>
@@ -70,7 +70,7 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="310.0" text="Double bed">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="310.0" text="Double bed - $120">
                      <font>
                         <Font name="Book Antiqua" size="16.0" />
                      </font>
@@ -93,7 +93,7 @@
                   <Insets left="50.0" />
                </opaqueInsets>
                <children>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="317.0" text="Room for couples" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="317.0" text="Room for couples - $120" textAlignment="CENTER">
                      <font>
                         <Font name="Book Antiqua" size="16.0" />
                      </font>
@@ -106,7 +106,7 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="317.0" text="Family room">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="317.0" text="Family room - $200">
                      <font>
                         <Font name="Book Antiqua" size="16.0" />
                      </font>
