@@ -19,10 +19,16 @@ public interface UserDao extends Dao<User>{
 
     /**
      * Returns true if username, given as parameter, exists in database.
-     *
      * @param username search String for username
-     * @return boolean
+     * @return boolean value
      */
     public boolean checkUsername(String username);
+    /**
+     * Fetches User object from table USER defined by username and password given as parameter
+     * @param username String value that represents username
+     * @param password String value that represents password
+     * @return int value for id
+     * @throws HotelException in case of an error
+     */
     public int getLoggedInId(String username, String password) throws HotelException;
 }
