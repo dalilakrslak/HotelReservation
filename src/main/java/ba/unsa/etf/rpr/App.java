@@ -64,8 +64,6 @@ public class App {
                 Room room = new Room();
                 room.setDescription(cl.getArgList().get(0));
                 room.setPrice(cl.getArgList().get(1));
-                room.setStatus(Boolean.parseBoolean(cl.getArgList().get(2)));
-                room.setKapacitet(Integer.parseInt(cl.getArgList().get(3)));
                 roomManager.add(room);
                 System.out.println("You successfully added room to database!");
             }
@@ -88,8 +86,6 @@ public class App {
                     room.setId(Integer.parseInt(cl.getArgList().get(0)));
                     room.setDescription(cl.getArgList().get(1));
                     room.setPrice(cl.getArgList().get(2));
-                    room.setStatus(Boolean.parseBoolean(cl.getArgList().get(3)));
-                    room.setKapacitet(Integer.parseInt(cl.getArgList().get(4)));
                     roomManager.update(room);
                     System.out.println("You successfully updated room in database!");
                 }
@@ -123,8 +119,7 @@ public class App {
         }
         else if(cl.hasOption(getRooms.getOpt())){
             RoomManager movieManager = new RoomManager();
-            movieManager.getAll().forEach(c -> System.out.println(c.getDescription()+ " ; " +c.getPrice()
-                    +" ; " +c.isStatus()+ " ; " +c.getKapacitet()));
+            movieManager.getAll().forEach(c -> System.out.println(c.getDescription()+ " ; " +c.getPrice()));
         }
         else if(cl.hasOption(getUsers.getLongOpt())){
             UserManager userManager = new UserManager();
