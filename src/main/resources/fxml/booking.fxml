@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -40,9 +41,9 @@
                   <Insets bottom="30.0" top="30.0" />
                </VBox.margin>
             </Text>
-            <HBox prefHeight="81.0" prefWidth="318.0">
+            <HBox prefHeight="76.0" prefWidth="318.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose room:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a room:">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -55,6 +56,20 @@
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="318.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="      Price per night:" wrappingWidth="143.63538360595703">
+                     <font>
+                        <Font name="Algerian" size="14.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="priceLabel" prefHeight="18.0" prefWidth="62.0">
+                     <font>
+                        <Font name="Algerian" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -106,7 +121,7 @@
                   </VBox>
                </children>
                <opaqueInsets>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
                </opaqueInsets>
             </HBox>
             <Button fx:id="confirmId" mnemonicParsing="false" onAction="#confirmOnAction" prefHeight="30.0" prefWidth="178.0" style="-fx-background-color: BLACK;" text="CONFIRM" textFill="WHITE">
