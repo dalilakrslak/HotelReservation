@@ -13,6 +13,10 @@ import java.util.TreeMap;
  */
 public class ReservationsDaoSQLImpl extends AbstractDao<Reservations> implements ReservationsDao{
     private static ReservationsDaoSQLImpl instance = null;
+
+    /**
+     * Constructor for ReservationsDaoSQLImpl
+     */
     public ReservationsDaoSQLImpl() {
         super("RESERVATIONS");
     }
