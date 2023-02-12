@@ -42,13 +42,11 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="roomTableID" prefHeight="534.0" prefWidth="407.0">
+                        <TableView fx:id="roomTableID" layoutY="1.0" prefHeight="533.0" prefWidth="266.0">
                            <columns>
                               <TableColumn fx:id="roomIdColumn" prefWidth="75.0" text="ROOM_ID" />
-                              <TableColumn fx:id="descriptionColumn" prefWidth="98.39995574951172" text="DESCRIPTION" />
-                              <TableColumn fx:id="priceColumn" prefWidth="80.79998779296875" text="PRICE" />
-                              <TableColumn fx:id="statusColumn" prefWidth="75.0" text="STATUS" />
-                              <TableColumn fx:id="kapacitetColumn" prefWidth="75.0" text="KAPACITET" />
+                              <TableColumn fx:id="descriptionColumn" prefWidth="111.1999740600586" text="DESCRIPTION" />
+                              <TableColumn fx:id="priceColumn" prefWidth="79.20001831054685" text="PRICE" />
                            </columns>
                         </TableView>
                      </children>
