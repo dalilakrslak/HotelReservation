@@ -66,8 +66,6 @@ public class LogInFormController {
         else{
             String username = usernameId.getText();
             String password = passwordId.getText();
-            int logInID = userManager.getLoggedInId(username, password);
-            user = userManager.getById(logInID);
             User user1 = DaoFactory.userDao().checkUser(username,password);
             if (user1 == null) {
                 greskica.setText("Please, enter correct username and password!");
@@ -75,6 +73,8 @@ public class LogInFormController {
                 passwordId.clear();
             }
             else {
+                int logInID = userManager.getLoggedInId(username, password);
+                user = userManager.getById(logInID);
                 openDialog("Home", "/fxml/home.fxml", new HomeController());
             }
         }
