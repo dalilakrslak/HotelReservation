@@ -17,6 +17,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -72,6 +74,13 @@ public class SignUpFormController {
             String username = usernameId.getText();
             UserDaoSQLImpl u = new UserDaoSQLImpl();
             User user = new User();
+            boolean emailOk=checkEmail(emailId.getText());
+            if(!emailOk) {
+                emptyEmail.setText("Invalid e-mail format.");
+            }
+            else{
+                emptyEmail.setText("");
+            }
             boolean flag = DaoFactory.userDao().checkUsername(username);
             if (flag) {
                 invalidUsernameId.setText("Username already exists!");
@@ -121,5 +130,21 @@ public class SignUpFormController {
         stage.setResizable(false);
         homeStage.hide();
         stage.show();
+    }
+    /**
+     *The checkEmail method checks if a given string is a valid email address.
+     *The method uses a regular expression to validate the email address.
+     *@param emailField The string to be checked if it is a valid email address.
+     *@return Returns true if the given string is a valid email address, false otherwise.
+     */
+    public boolean checkEmail(String emailField){
+        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+        //Compile regular expression to get the pattern
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(emailField);
+        return matcher.matches();
     }
 }
