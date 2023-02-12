@@ -37,8 +37,6 @@ public class AdminController {
     public TableColumn<Room, Integer> roomIdColumn;
     public TableColumn<Room, String> descriptionColumn;
     public TableColumn<Room, String> priceColumn;
-    public TableColumn<Room, Boolean> statusColumn;
-    public TableColumn<Room, Integer> kapacitetColumn;
     public TableView roomTableID;
     public TableColumn<Reservations, Integer> reservationIdColumn;
     public TableColumn<Reservations, Date> checkInColumn;
@@ -74,8 +72,6 @@ public class AdminController {
         });
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<Room, String>("description"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<Room, String>("price"));
-        statusColumn.setCellValueFactory(new PropertyValueFactory<Room, Boolean>("status"));
-        kapacitetColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("kapacitet"));
         refreshRoom();
 
         reservationIdColumn.setCellValueFactory(cellData ->{
