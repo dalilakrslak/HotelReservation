@@ -50,8 +50,8 @@ public class App {
 
     /**
      * Manipulates with console screen commands
-     * @param args
-     * @throws Exception
+     * @param args String[]
+     * @throws Exception in case of an error
      */
     public static void main(String[] args) throws Exception{
         Options options = addOptions();
