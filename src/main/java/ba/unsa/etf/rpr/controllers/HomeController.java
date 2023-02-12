@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.exceptions.HotelException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -60,7 +61,7 @@ public class HomeController {
      * @param actionEvent ActionEvent
      * @throws IOException in case of an error
      */
-    public void bookNowOnAction(ActionEvent actionEvent) throws IOException {
+    public void bookNowOnAction(ActionEvent actionEvent) throws IOException, HotelException {
         openDialog("Booking", "/fxml/booking.fxml", new BookingController());
     }
     /**
