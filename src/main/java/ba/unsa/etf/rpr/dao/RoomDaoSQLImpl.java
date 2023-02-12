@@ -15,6 +15,10 @@ import java.util.TreeMap;
  */
 public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao{
     private static RoomDaoSQLImpl instance = null;
+
+    /**
+     * constructor for RoomDaoSQLImpl
+     */
     public RoomDaoSQLImpl() {
         super("ROOM");
     }
@@ -68,6 +72,12 @@ public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao{
         item.put("price", object.getPrice());
         return item;
     }
+    /**
+     * Fetches Room object from table ROOM defined by description given as parameter
+     * @param description String value that represents description
+     * @return Room instance
+     * @throws HotelException in case of an error
+     */
     @Override
     public Room getByDescription(String description) throws HotelException {
         try {
