@@ -23,8 +23,6 @@ public class RoomManagerTest {
         Room room = new Room();
         room.setDescription("ocean view");
         room.setPrice("$100");
-        room.setStatus(false);
-        room.setKapacitet(15);
         boolean test = false;
         try{
             roomManager.add(room);
@@ -50,8 +48,6 @@ public class RoomManagerTest {
         Room room = new Room();
         room.setDescription("ocean view");
         room.setPrice("$100");
-        room.setStatus(false);
-        room.setKapacitet(15);
         boolean test = true;
         try{
             roomManager.add(room);
