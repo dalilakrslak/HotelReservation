@@ -54,6 +54,11 @@ public class BookingController {
         roomId.setItems(FXCollections.observableList(rooms));
     }
 
+    /**
+     * Method for making a reservation and inserting it in database
+     * @param actionEvent ActionEvent
+     * @throws HotelException in case of an error
+     */
     public void confirmOnAction(ActionEvent actionEvent) throws HotelException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
