@@ -13,7 +13,7 @@ public class UserManager {
     /**
      * Checks if username is between 5 and 15 characters
      * @param name String
-     * @throws HotelException in case of error
+     * @throws HotelException in case of an error
      */
     public void validateUsername(String name) throws HotelException{
         if (name == null || name.length() > 15 || name.length() < 5){
@@ -25,7 +25,7 @@ public class UserManager {
      * Adds User object to USER table
      * @param u User
      * @return User instance
-     * @throws HotelException in case of error
+     * @throws HotelException in case of an error
      */
     public User add(User u) throws HotelException {
         if (u.getId() != 0){
@@ -89,6 +89,14 @@ public class UserManager {
     public User getById(int userId) throws HotelException{
         return DaoFactory.userDao().getById(userId);
     }
+
+    /**
+     * Fetches User object from table USER defined by username and password given as parameter
+     * @param username String value that represents username
+     * @param password String value that represents password
+     * @return int value for id
+     * @throws HotelException in case of an error
+     */
     public int getLoggedInId(String username, String password) throws HotelException {
         return DaoFactory.userDao().getLoggedInId(username, password);
     }
