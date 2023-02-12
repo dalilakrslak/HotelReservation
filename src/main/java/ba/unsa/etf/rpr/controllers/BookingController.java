@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import static ba.unsa.etf.rpr.controllers.LogInFormController.user;
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -36,14 +39,15 @@ public class BookingController {
     public DatePicker checkInId;
     public DatePicker checkOutId;
     public GridPane bookingPane;
+    private final RoomManager roomManager = new RoomManager();
+    private final List<Room> room = roomManager.getAll();
     /**
      * Constructor which adds choices in ChoiceBox
      */
-    public BookingController(){
-        rooms.add("Single bed");
-        rooms.add("For couples");
-        rooms.add("Two beds");
-        rooms.add("Family room");
+    public BookingController() throws HotelException {
+        for(Room r: room){
+            rooms.add(r.getDescription());
+        }
     }
 
     /**
