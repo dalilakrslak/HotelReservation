@@ -54,8 +54,8 @@ public class User implements Idable {
         return user_id;
     }
     /**
-     * gets the value of id
-     * @return int value
+     * gets the value of first_name
+     * @return String value
      */
     public String getFirst_name() {
         return first_name;
@@ -68,8 +68,8 @@ public class User implements Idable {
         this.first_name = first_name;
     }
     /**
-     * gets the value of id
-     * @return int value
+     * gets the value of last_name
+     * @return String value
      */
     public String getLast_name() {
         return last_name;
@@ -82,8 +82,8 @@ public class User implements Idable {
         this.last_name = last_name;
     }
     /**
-     * gets the value of id
-     * @return int value
+     * gets the value of email
+     * @return String value
      */
     public String getEmail() {
         return email;
