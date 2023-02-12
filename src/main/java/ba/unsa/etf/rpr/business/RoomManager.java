@@ -14,7 +14,7 @@ public class RoomManager {
      * Adds Room object to ROOM table
      * @param r Room
      * @return Room instance
-     * @throws HotelException in case of error
+     * @throws HotelException in case of an error
      */
     public Room add(Room r) throws HotelException {
         if (r.getId() != 0){
@@ -52,7 +52,7 @@ public class RoomManager {
 
     /**
      * Fetches Room object from table ROOM defined by id given as parameter
-     * @param roomId id
+     * @param roomId int value that represents id
      * @return Room instance
      * @throws HotelException in case of an error
      */
@@ -60,6 +60,13 @@ public class RoomManager {
     public Room getById(int roomId) throws HotelException{
         return DaoFactory.roomDao().getById(roomId);
     }
+
+    /**
+     * Fetches Room object from table ROOM defined by description given as parameter
+     * @param description String value that represents description
+     * @return Room instance
+     * @throws HotelException in case of an error
+     */
     public Room getByDescription(String description) throws HotelException{
         return DaoFactory.roomDao().getByDescription(description);
     }
