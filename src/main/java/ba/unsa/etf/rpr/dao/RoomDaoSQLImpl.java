@@ -23,10 +23,10 @@ public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao{
         super("ROOM");
     }
     /**
-     * @author Dalila Krslak
-     * @return RoomDaoSQLImpl
      * We don't need more than one object for CRUD operations on table 'ROOM' so we will use Singleton
      * This method will call private constructor in instance==null and then return that instance
+     * @author Dalila Krslak
+     * @return RoomDaoSQLImpl
      */
     public static RoomDaoSQLImpl getInstance(){
         if(instance==null)
