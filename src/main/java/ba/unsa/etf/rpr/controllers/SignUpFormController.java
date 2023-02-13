@@ -68,6 +68,7 @@ public class SignUpFormController {
      * Checks if fields are empty, if the account exists and opens 'Home' window
      * @param actionEvent ActionEvent
      * @throws IOException in case of an error
+     * @throws HotelException in case of an error
      */
     public void signupButtonOnAction(ActionEvent actionEvent) throws HotelException, IOException {
         if (!usernameId.getText().isBlank() && !passwordId.getText().isBlank() && !firstNameId.getText().isBlank() && !lastNameId.getText().isBlank() && !emailId.getText().isBlank()) {
