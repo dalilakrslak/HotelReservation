@@ -21,10 +21,10 @@ public class ReservationsDaoSQLImpl extends AbstractDao<Reservations> implements
         super("RESERVATIONS");
     }
     /**
-     * @author Dalila Krslak
-     * @return ReservationsDaoSQLImpl
      * We don't need more than one object for CRUD operations on table 'RESERVATIONS' so we will use Singleton
      * This method will call private constructor in instance==null and then return that instance
+     * @author Dalila Krslak
+     * @return ReservationsDaoSQLImpl
      */
     public static ReservationsDaoSQLImpl getInstance(){
         if(instance==null)
