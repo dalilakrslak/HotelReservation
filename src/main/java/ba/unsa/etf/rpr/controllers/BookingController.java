@@ -115,23 +115,32 @@ public class BookingController {
      * @throws HotelException in case of an error
      */
     public void confirmOnAction(ActionEvent actionEvent) throws HotelException {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        java.sql.Date checkIn1 = Date.valueOf(checkInId.getValue());
-        java.sql.Date checkOut2 = Date.valueOf(checkOutId.getValue());
-        String roomDescription = roomId.getValue();
-        RoomManager roomManager = new RoomManager();
-        Room room = roomManager.getByDescription(roomDescription);
-        ReservationsDaoSQLImpl r = new ReservationsDaoSQLImpl();
-        Reservations reservations = new Reservations();
-        reservations.setCheck_in(checkIn1);
-        reservations.setCheck_out(checkOut2);
-        reservations.setPerson_id(user);
-        reservations.setRoom_id(room);
-        r.add(reservations);
-        alert.setTitle("Success!");
-        alert.setHeaderText(null);
-        alert.setContentText("Booked successfully!");
-        alert.showAndWait();
+        if(roomId.getValue()==null || checkInId.getValue()==null  || checkOutId.getValue()==null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Missing fields");
+            alert.setContentText("You have to fill in all fields in order to book an appointment!");
+            alert.showAndWait();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            java.sql.Date checkIn1 = Date.valueOf(checkInId.getValue());
+            java.sql.Date checkOut2 = Date.valueOf(checkOutId.getValue());
+            String roomDescription = roomId.getValue();
+            RoomManager roomManager = new RoomManager();
+            Room room = roomManager.getByDescription(roomDescription);
+            ReservationsDaoSQLImpl r = new ReservationsDaoSQLImpl();
+            Reservations reservations = new Reservations();
+            reservations.setCheck_in(checkIn1);
+            reservations.setCheck_out(checkOut2);
+            reservations.setPerson_id(user);
+            reservations.setRoom_id(room);
+            r.add(reservations);
+            alert.setTitle("Success!");
+            alert.setHeaderText(null);
+            alert.setContentText("Booked successfully!");
+            alert.showAndWait();
+        }
     }
 
     /**
