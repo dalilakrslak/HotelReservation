@@ -19,6 +19,9 @@ public class RoomTest {
     private RoomManager roomManager;
     @Mock
     private RoomDao roomDao;
+    /**
+     * constructor
+     */
     public Room room  =  new Room("one-bed", "$30");
 
     /**
