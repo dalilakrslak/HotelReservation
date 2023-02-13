@@ -60,6 +60,7 @@ public class HomeController {
      * Opens window for booking
      * @param actionEvent ActionEvent
      * @throws IOException in case of an error
+     * @throws HotelException in case of an error
      */
     public void bookNowOnAction(ActionEvent actionEvent) throws IOException, HotelException {
         openDialog("Booking", "/fxml/booking.fxml", new BookingController());
