@@ -40,6 +40,7 @@ public class BookingController {
     private final List<Room> room = roomManager.getAll();
     /**
      * Constructor which adds choices in ChoiceBox
+     * @throws HotelException in case of an error
      */
     public BookingController() throws HotelException {
         for(Room r: room){
