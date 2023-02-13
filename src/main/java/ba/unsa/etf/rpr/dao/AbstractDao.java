@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * Abstract class that implements core DAO CRUD methods for every entity
- *
+ * @param <T>
  * @author Dalila Krslak
  */
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
@@ -42,6 +42,11 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             }
         }
     }
+
+    /**
+     * gets connection
+     * @return Connection
+     */
     public static Connection getConnection(){
         return AbstractDao.connection;
     }
