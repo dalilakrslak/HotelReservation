@@ -17,6 +17,9 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
  */
 public class AboutUsController {
     public Button homeButtonId;
+    /**
+     * aboutusButtonId Button attribute
+     */
     public Button aboutusButtonId;
     public Button roomsButtonId;
     public Button contactButtonOnAction;
