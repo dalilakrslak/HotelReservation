@@ -52,6 +52,7 @@ public class LogInFormController {
      * Checks if fields are empty, if the account exists and opens 'Home' window
      * @param actionEvent ActionEvent
      * @throws IOException in case of an error
+     * @throws HotelException in case of an error
      */
     public void loginButtonOnAction(ActionEvent actionEvent) throws IOException, HotelException {
         if(usernameId.getText().isBlank() && passwordId.getText().isBlank()){
