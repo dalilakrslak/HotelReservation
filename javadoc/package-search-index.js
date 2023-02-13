@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ba.unsa.etf.rpr"},{"l":"ba.unsa.etf.rpr.business"},{"l":"ba.unsa.etf.rpr.controllers"},{"l":"ba.unsa.etf.rpr.dao"},{"l":"ba.unsa.etf.rpr.domain"},{"l":"ba.unsa.etf.rpr.exceptions"}];updateSearchResults();
