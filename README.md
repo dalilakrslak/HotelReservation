@@ -12,3 +12,8 @@ With our simple reservation system you can book a room online or just get more i
 ### Languages and Tools:
 * [Java](https://www.java.com/en/)
 * [MySQL](https://www.mysql.com/)
+
+### Preview:
+
+https://github.com/dalilakrslak/HotelReservation/assets/115994097/40b130e1-877d-465c-8594-b5310809b99b
+
